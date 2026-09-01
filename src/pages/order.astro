@@ -1,4 +1,5 @@
 ---
+import { supabase } from '../lib/supabase.js';
 const title = "ASTA — Mail order coupon";
 ---
 
@@ -231,123 +232,145 @@ const title = "ASTA — Mail order coupon";
 
 
 
-    <script is:inline>
-      const cart = JSON.parse(localStorage.getItem('asta_cart')) || [];
 
-      // Redirect if cart is empty
-      if (cart.length === 0) {
-        window.location.href = '/';
-      }
+    <script type="module">
+  // 1. Load Supabase from CDN
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-      // Update cart count in header
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById('cartCount').textContent = totalItems;
+  // 2. Put your real keys here
+  const supabase = createClient(
+    'https://ryfufhtymvjeveppwjoj.supabase.co',          // ← Your Project URL
+    'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw' // ← Your anon public key
+  );
 
-      // Calculate totals
-      let subtotal = 0;
-      cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-      });
+  // 3. Rest of your code
+  const cart = JSON.parse(localStorage.getItem('asta_cart')) || [];
 
-      // Delivery: 80 inside Dhaka, 130 outside
-      let delivery = 80;
-      const districtSelect = document.getElementById('district');
-
-      function updateTotals() {
-        const isDhaka = districtSelect.value === 'Dhaka' || districtSelect.value === '';
-        delivery = isDhaka ? 80 : 130;
-
-        document.getElementById('deliveryLabel').textContent = isDhaka ? 'inside Dhaka' : 'outside Dhaka';
-        document.getElementById('summaryDelivery').textContent = `৳${delivery}`;
-        document.getElementById('summarySubtotal').textContent = `৳${subtotal.toLocaleString()}`;
-        document.getElementById('summaryTotal').textContent = `৳${(subtotal + delivery).toLocaleString()}`;
-        document.getElementById('placeOrderBtn').textContent = `PLACE ORDER · ৳${(subtotal + delivery).toLocaleString()}`;
-      }
-
-      // Render summary items
-      const summaryContainer = document.getElementById('summaryItems');
-      summaryContainer.innerHTML = cart.map(item => {
-        const lineTotal = item.price * item.quantity;
-        return `
-          <div class="summary-item">
-            <img src="${item.image}" alt="${item.name}" class="summary-img" />
-            <div class="summary-info">
-              <div class="summary-name">${item.name}</div>
-              <div class="summary-meta">${item.variant} · ${item.quantity}</div>
-            </div>
-            <div class="summary-price">৳${lineTotal.toLocaleString()}</div>
-          </div>
-        `;
-      }).join('');
-
-      // Initial totals
-      updateTotals();
-
-      // Update delivery when district changes
-      districtSelect.addEventListener('change', updateTotals);
-
-      // Form submit
-    document.getElementById('orderForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const form = e.target;
-  const fullName = form.fullName.value.trim();
-  const phone = form.phone.value.trim();
-  const district = form.district.value;
-  const address = form.address.value.trim();
-  const payment = form.payment.value;
-  const email = form.email.value.trim();
-  const notes = form.notes.value.trim();
-
-  const errorEl = document.getElementById('formError');
-
-  if (!fullName || !phone || !address) {
-    if (errorEl) {
-      errorEl.style.display = 'block';
-      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    return;
+  if (cart.length === 0) {
+    window.location.href = '/';
   }
 
-  if (errorEl) errorEl.style.display = 'none';
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById('cartCount').textContent = totalItems;
 
-  // Generate order number (e.g. AB-6867)
-  const orderId = 'AB-' + Math.floor(1000 + Math.random() * 9000);
-
-  // Calculate totals again
   let subtotal = 0;
-  cart.forEach(item => subtotal += item.price * item.quantity);
-  const isDhaka = district === 'Dhaka';
-  const delivery = isDhaka ? 80 : 130;
-  const total = subtotal + delivery;
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+  });
 
-  // Save order data so the thank-you page can read it
-  const orderData = {
-    orderId,
-    fullName,
-    phone,
-    email,
-    district,
-    address,
-    payment,
-    notes,
-    items: cart,
-    subtotal,
-    delivery,
-    total,
-    createdAt: new Date().toISOString()
-  };
+  let delivery = 80;
+  const districtSelect = document.getElementById('district');
 
-  localStorage.setItem('asta_last_order', JSON.stringify(orderData));
+  function updateTotals() {
+    const isDhaka = districtSelect.value === 'Dhaka' || districtSelect.value === '';
+    delivery = isDhaka ? 80 : 130;
 
-  // Clear the cart
-  localStorage.removeItem('asta_cart');
+    document.getElementById('deliveryLabel').textContent = isDhaka ? 'inside Dhaka' : 'outside Dhaka';
+    document.getElementById('summaryDelivery').textContent = `৳${delivery}`;
+    document.getElementById('summarySubtotal').textContent = `৳${subtotal.toLocaleString()}`;
+    document.getElementById('summaryTotal').textContent = `৳${(subtotal + delivery).toLocaleString()}`;
+    document.getElementById('placeOrderBtn').textContent = `PLACE ORDER · ৳${(subtotal + delivery).toLocaleString()}`;
+  }
 
-  // Go to thank-you page
-  window.location.href = '/thank-you';
-});
-    </script>
+  // Render summary
+  const summaryContainer = document.getElementById('summaryItems');
+  summaryContainer.innerHTML = cart.map(item => {
+    const lineTotal = item.price * item.quantity;
+    return `
+      <div class="summary-item">
+        <img src="${item.image}" alt="${item.name}" class="summary-img" />
+        <div class="summary-info">
+          <div class="summary-name">${item.name}</div>
+          <div class="summary-meta">${item.variant} · ${item.quantity}</div>
+        </div>
+        <div class="summary-price">৳${lineTotal.toLocaleString()}</div>
+      </div>
+    `;
+  }).join('');
 
+  updateTotals();
+  districtSelect.addEventListener('change', updateTotals);
+
+  // Form submit
+  document.getElementById('orderForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const fullName = form.fullName.value.trim();
+    const phone = form.phone.value.trim();
+    const district = form.district.value;
+    const address = form.address.value.trim();
+    const payment = form.payment.value;
+    const email = form.email.value.trim();
+    const notes = form.notes.value.trim();
+
+    const errorEl = document.getElementById('formError');
+    const button = document.getElementById('placeOrderBtn');
+
+    if (!fullName || !phone || !address || !district) {
+      errorEl.textContent = 'Please fill in your name, phone and full address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+
+    const orderId = 'AB-' + Math.floor(1000 + Math.random() * 9000);
+    const deliveryCost = district === 'Dhaka' ? 80 : 130;
+    const total = subtotal + deliveryCost;
+
+    button.disabled = true;
+    button.textContent = 'PLACING ORDER...';
+
+    const { data, error } = await supabase
+      .from('orders')
+      .insert([{
+        order_id: orderId,
+        full_name: fullName,
+        phone: phone,
+        email: email || null,
+        district: district,
+        address: address,
+        payment: payment,
+        notes: notes || null,
+        items: cart,
+        subtotal: subtotal,
+        delivery: deliveryCost,
+        total: total
+      }]);
+
+    if (error) {
+      console.error(error);
+      button.disabled = false;
+      button.textContent = `PLACE ORDER · ৳${total.toLocaleString()}`;
+      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // Success → save for thank-you page
+    localStorage.setItem('asta_last_order', JSON.stringify({
+      orderId,
+      fullName,
+      phone,
+      email,
+      district,
+      address,
+      payment,
+      notes,
+      items: cart,
+      subtotal,
+      delivery: deliveryCost,
+      total
+    }));
+
+    localStorage.removeItem('asta_cart');
+    window.location.href = '/thank-you';
+  });
+</script>
+
+
+   
     <style is:global>
       body {
         margin: 0;
