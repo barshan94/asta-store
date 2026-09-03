@@ -1,42 +1,79 @@
 ---
 const title = "ASTA — Order Received";
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f3ef" />
     <title>{title}</title>
   </head>
 
   <body>
-    <!-- HEADER -->
+    <!-- =========================
+         HEADER
+    ========================== -->
     <header class="header">
       <div class="header-inner">
+
         <div class="double-lines"></div>
+
         <div class="header-content">
+
           <div class="logo-wrapper">
             <div class="logo-icon">
-              <img src="/images/logo.jpg" alt="ASTA Logo" class="logo-img" />
+ <img
+  id="siteLogo"
+  src=""
+  alt="ASTA Logo"
+  class="logo-img"
+/>
             </div>
+
             <div class="logo">ASTA</div>
           </div>
+
           <div class="right-side">
-            <a href="https://www.facebook.com/astabagsbd" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
-            <button class="cart-header-btn" onclick="window.location.href='/'">
-              <svg class="cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <a
+              href="https://www.facebook.com/astabagsbd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              FACEBOOK
+            </a>
+
+            <button
+              class="cart-header-btn"
+              onclick="window.location.href='/'"
+              type="button"
+            >
+              <svg
+                class="cart-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
+
               <span>CART 0</span>
             </button>
           </div>
+
         </div>
       </div>
     </header>
 
+
+    <!-- =========================
+         INFO BAR
+    ========================== -->
     <div class="info-bar">
       <span>EDITION NO. 04</span>
       <span>HANDMADE LEATHER · DHAKA</span>
@@ -44,31 +81,66 @@ const title = "ASTA — Order Received";
       <span>EXCHANGE WITHIN THREE DAYS</span>
     </div>
 
+
+    <!-- =========================
+         MAIN
+    ========================== -->
     <main class="thankyou-page">
-      <p class="order-received-label">ORDER RECEIVED · LATE EDITION</p>
 
-      <h1 class="order-id">
-        <span class="order-id-text" id="orderIdText">AB-0000</span>
-      </h1>
-
-      <h2 class="thank-you-name" id="thankYouName">Thank you.</h2>
-
-      <p class="thank-you-text">
-        Your coupon is with us. Send it through on<br />
-        WhatsApp and we will confirm the colour and the<br />
-        delivery slot straight away.
+      <p class="order-received-label">
+        ORDER RECEIVED · LATE EDITION
       </p>
 
-      <a href="#" id="whatsappBtn" class="confirm-whatsapp-btn" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <h1 class="order-id">
+        <span
+          class="order-id-text"
+          id="orderIdText"
+        >
+          AB-0000
+        </span>
+      </h1>
+
+      <h2
+        class="thank-you-name"
+        id="thankYouName"
+      >
+        Thank you.
+      </h2>
+
+      <p class="thank-you-text">
+        Your coupon is with us. Send it through on WhatsApp and
+        we will confirm the colour and the delivery slot straight away.
+      </p>
+
+
+      <!-- WhatsApp Confirmation -->
+      <a
+        href="#"
+        id="whatsappBtn"
+        class="confirm-whatsapp-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
-        CONFIRM ON WHATSAPP
+
+        <span>CONFIRM ON WHATSAPP</span>
       </a>
 
-      <!-- Order table -->
+
+      <!-- =========================
+           ORDER TABLE
+      ========================== -->
       <div class="order-table-wrap">
         <table class="order-table">
+
           <thead>
             <tr>
               <th>ITEM</th>
@@ -76,477 +148,1604 @@ const title = "ASTA — Order Received";
               <th>AMOUNT</th>
             </tr>
           </thead>
+
           <tbody id="orderTableBody"></tbody>
+
         </table>
       </div>
 
-   
+
+      <!-- =========================
+           DELIVERY INFORMATION
+      ========================== -->
       <div class="shipped-to">
-  <p class="shipped-label">DELIVER TO</p>
-  <p id="shipNamePhone"></p>
-  <p id="shipAddress"></p>
-</div>
 
-<p class="email-note">
-  New drops are posted on <a href="https://www.facebook.com/astabagsbd" target="_blank" rel="noopener">facebook.com/astabagsbd</a>.
-</p>
+        <p class="shipped-label">
+          DELIVER TO
+        </p>
+
+        <p id="shipNamePhone"></p>
+
+        <p id="shipAddress"></p>
+
+      </div>
 
 
+      <!-- =========================
+           FACEBOOK NOTE
+      ========================== -->
+      <p class="email-note">
+        New drops are posted on
+        <a
+          href="https://www.facebook.com/astabagsbd"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          facebook.com/astabagsbd
+        </a>.
+      </p>
 
-      <a href="/" class="back-to-edition">BACK TO THE EDITION</a>
+
+      <!-- Back -->
+      <a
+        href="/"
+        class="back-to-edition"
+      >
+        ← BACK TO THE EDITION
+      </a>
+
     </main>
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
     <footer class="footer">
+
       <div class="footer-inner">
-        <div class="footer-left">ASTA BAGS · DHAKA, BANGLADESH</div>
-        <div class="footer-right">
-          <a href="https://www.facebook.com/astabagsbd" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
-          <a href="https://api.whatsapp.com/send/?phone=%2B8801577488708" target="_blank" rel="noopener noreferrer">+880 1577 488708</a>
+
+        <div class="footer-left">
+          ASTA BAGS · DHAKA, BANGLADESH
         </div>
+
+        <div class="footer-right">
+
+          <a
+            href="https://www.facebook.com/astabagsbd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FACEBOOK
+          </a>
+
+          <a
+            href="https://api.whatsapp.com/send/?phone=%2B8801577488708"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            +880 1577 488708
+          </a>
+
+        </div>
+
       </div>
+
     </footer>
 
+
+    <!-- =========================
+         FLOATING BUTTONS
+    ========================== -->
     <div class="floating-buttons">
-      <a href="https://www.facebook.com/astabagsbd" target="_blank" rel="noopener noreferrer" class="float-btn fb-btn" aria-label="Facebook">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+
+      <!-- Facebook -->
+      <a
+        href="https://www.facebook.com/astabagsbd"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="float-btn fb-btn"
+        aria-label="Facebook"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
       </a>
-      <a href="https://api.whatsapp.com/send/?phone=%2B8801577488708" target="_blank" rel="noopener noreferrer" class="float-btn wa-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+
+
+      <!-- WhatsApp -->
+      <a
+        href="https://api.whatsapp.com/send/?phone=%2B8801577488708"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="float-btn wa-btn"
+      >
+
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
+
         <span>WHATSAPP</span>
+
       </a>
+
     </div>
 
-<script is:inline>
-  const order = JSON.parse(localStorage.getItem('asta_last_order'));
 
-  if (!order) {
-    window.location.href = '/';
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const supabase = createClient(
+    'https://ryfufhtymvjeveppwjoj.supabase.co',
+    'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw'
+  );
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 
-  // ===== Order number with colorful effect =====
-  const orderIdEl = document.getElementById('orderIdText');
-  orderIdEl.textContent = order.orderId;
-  orderIdEl.setAttribute('data-text', order.orderId);
+  // ===== SITE SETTINGS (logo + whatsapp number) =====
+  async function loadSiteSettings() {
+    const { data, error } = await supabase
+      .from('site_settings')
+      .select('key, value');
 
-  // ===== Thank you name =====
-  document.getElementById('thankYouName').textContent = `Thank you, ${order.fullName}.`;
+    if (error) {
+      console.error('Site settings error:', error);
+      return {};
+    }
 
-  // ===== Deliver to =====
-  document.getElementById('shipNamePhone').textContent = `${order.fullName} · ${order.phone}`;
-  document.getElementById('shipAddress').textContent = `${order.address}, ${order.district}`;
+    const settings = {};
+    (data || []).forEach(row => { settings[row.key] = row.value; });
 
-  // ===== Order table =====
-  const tbody = document.getElementById('orderTableBody');
-  let rows = '';
+    if (settings.logoUrl) {
+      const logo = document.getElementById('siteLogo');
+      if (logo) logo.src = settings.logoUrl;
+    }
 
-  order.items.forEach(item => {
-    rows += `
-      <tr>
-        <td>${item.name}</td>
-        <td>${item.variant} · ${item.quantity}</td>
-        <td>৳${(item.price * item.quantity).toLocaleString()}</td>
-      </tr>
-    `;
-  });
-
-  rows += `
-    <tr>
-      <td>Delivery</td>
-      <td>${order.district === 'Dhaka' ? 'inside Dhaka' : 'outside Dhaka'}</td>
-      <td>৳${order.delivery}</td>
-    </tr>
-    <tr class="total-row">
-      <td><strong>Total</strong></td>
-      <td>${order.payment === 'cod' ? 'Cash on delivery' : order.payment}</td>
-      <td><strong>৳${order.total.toLocaleString()}</strong></td>
-    </tr>
-  `;
-
-  tbody.innerHTML = rows;
-
-  // ===== WhatsApp message (exact template) =====
-  let itemsText = order.items
-    .map(item => `${item.quantity}× ${item.name} (${item.variant})`)
-    .join(', ');
-
-  let paymentText = order.payment === 'cod' 
-    ? 'Cash on delivery' 
-    : order.payment === 'bkash' 
-      ? 'bKash' 
-      : order.payment === 'nagad' 
-        ? 'Nagad' 
-        : 'Bank transfer';
-
-  let message = `Order ${order.orderId}\n`;
-  message += `${itemsText}\n`;
-  message += `Total: ৳${order.total.toLocaleString()} (incl. delivery ৳${order.delivery})\n`;
-  message += `Payment: ${paymentText}\n`;
-  message += `Name: ${order.fullName}\n`;
-  message += `Phone: ${order.phone}\n`;
-  message += `Address: ${order.address}, ${order.district}`;
-
-  if (order.notes) {
-    message += `\nNotes: ${order.notes}`;
+    return settings;
   }
 
-  // ===== THIS LINE WAS MISSING =====
-  document.getElementById('whatsappBtn').href = 
-    `https://api.whatsapp.com/send/?phone=8801577488708&text=${encodeURIComponent(message)}`;
+  // ===== ORDER DETAILS FROM LOCAL STORAGE =====
+  function renderOrder(settings) {
+    const raw = localStorage.getItem('asta_last_order');
+    if (!raw) return; // No order in storage — leave the static placeholders as-is
+
+    let order;
+    try {
+      order = JSON.parse(raw);
+    } catch {
+      return;
+    }
+
+    const {
+      orderId, fullName, phone, district, address,
+      items = [], delivery = 0, total = 0
+    } = order;
+
+    // Order ID — also drives the glitch effect (uses data-text via CSS)
+    const orderIdEl = document.getElementById('orderIdText');
+    if (orderIdEl && orderId) {
+      orderIdEl.textContent = orderId;
+      orderIdEl.setAttribute('data-text', orderId);
+    }
+
+    // Greeting
+    const nameEl = document.getElementById('thankYouName');
+    if (nameEl && fullName) {
+      nameEl.textContent = `Thank you, ${fullName}.`;
+    }
+
+    // Delivery block
+    const shipNamePhone = document.getElementById('shipNamePhone');
+    if (shipNamePhone) shipNamePhone.textContent = `${fullName || ''} · ${phone || ''}`;
+
+    const shipAddress = document.getElementById('shipAddress');
+    if (shipAddress) shipAddress.textContent = `${address || ''}${district ? ', ' + district : ''}`;
+
+    // Order table
+    const tbody = document.getElementById('orderTableBody');
+    if (tbody) {
+      const rows = items.map(item => {
+        const lineTotal = (item.price || 0) * (item.quantity || 1);
+        return `
+          <tr>
+            <td>${escapeHtml(item.name || '')}</td>
+            <td>${escapeHtml(item.variant || '')} · ${item.quantity || 1}</td>
+            <td>৳${lineTotal.toLocaleString()}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const totalRow = `
+        <tr class="total-row">
+          <td colspan="2">Total (incl. ৳${Number(delivery).toLocaleString()} delivery)</td>
+          <td>৳${Number(total).toLocaleString()}</td>
+        </tr>
+      `;
+
+      tbody.innerHTML = rows + totalRow;
+    }
+
+    // WhatsApp confirm button — prefilled message to the shop's number
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    if (whatsappBtn) {
+      const shopNumber = String(settings?.whatsappNumber || '8801577488708').replace(/[^0-9]/g, '');
+      const itemsSummary = items.map(i => `${i.name} (${i.variant} x${i.quantity})`).join(', ');
+      const message =
+        `Hi ASTA, confirming my order ${orderId || ''}.\n` +
+        `Items: ${itemsSummary}\n` +
+        `Total: ৳${Number(total).toLocaleString()}\n` +
+        `Name: ${fullName || ''}\n` +
+        `Phone: ${phone || ''}\n` +
+        `Address: ${address || ''}, ${district || ''}`;
+      whatsappBtn.href = `https://api.whatsapp.com/send/?phone=${shopNumber}&text=${encodeURIComponent(message)}`;
+    }
+  }
+
+  loadSiteSettings().then(settings => renderOrder(settings));
 </script>
 
+    <!-- =========================
+         CSS
+    ========================== -->
     <style is:global>
-      body {
-        margin: 0;
-        background: #f4f3ef;
-        color: #151515;
-        font-family: Georgia, serif;
+
+      /* =================================
+         RESET
+      ================================= */
+
+      * {
+        box-sizing: border-box;
       }
 
-      /* Header */
+      html {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        margin: 0;
+        width: 100%;
+        min-height: 100vh;
+
+        background: #f4f3ef;
+        color: #151515;
+
+        font-family: Georgia, serif;
+
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+
+      /* =================================
+         HEADER
+      ================================= */
+
       .header {
         width: 100%;
-        box-sizing: border-box;
         padding: 40px 40px 0;
       }
+
+      .header-inner {
+        width: 100%;
+      }
+
       .double-lines {
         height: 2px;
+
         border-top: 1px solid #151515;
         border-bottom: 1px solid #151515;
+
         margin-bottom: 24px;
       }
+
       .header-content {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+
+        gap: 30px;
+
         padding-bottom: 24px;
+
         border-bottom: 1px solid #bdbbb5;
       }
+
+
+      /* =================================
+         LOGO
+      ================================= */
+
       .logo-wrapper {
         display: flex;
         align-items: center;
+
         gap: 16px;
+
+        min-width: 0;
       }
+
       .logo-icon {
         width: 70px;
         height: 70px;
+
+        flex-shrink: 0;
+
         background: #e6ff2b;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
+        overflow: hidden;
       }
+
       .logo-img {
         width: 100%;
         height: 100%;
+
         object-fit: contain;
       }
+
       .logo {
         font-size: 58px;
+        line-height: 1;
+
         font-weight: 700;
+
         letter-spacing: 4px;
+
+        white-space: nowrap;
       }
-      .info-bar {
-        display: flex;
-        justify-content: space-between;
-        padding: 12px 40px;
-        border-bottom: 1px solid #bdbbb5;
-        font-family: Arial, sans-serif;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        color: #666;
-      }
+
+
+      /* =================================
+         HEADER RIGHT
+      ================================= */
+
       .right-side {
         display: flex;
         align-items: center;
+
         gap: 30px;
+
+        flex-shrink: 0;
       }
+
       .right-side a {
         color: #008ca3;
+
         text-decoration: none;
+
         font-family: Arial, sans-serif;
+
         font-size: 12px;
+
         letter-spacing: 1.5px;
+
+        white-space: nowrap;
       }
+
+      .right-side a:hover {
+        color: #006d7a;
+      }
+
+
+      /* =================================
+         CART BUTTON
+      ================================= */
+
       .cart-header-btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
+
         gap: 8px;
+
         background: transparent;
+
         border: 1px solid #999;
+
         padding: 11px 18px;
+
         font-family: Arial, sans-serif;
+
         font-size: 12px;
+
         letter-spacing: 1.2px;
+
         cursor: pointer;
+
+        white-space: nowrap;
+
+        min-height: 40px;
       }
+
+      .cart-header-btn:hover {
+        background: #151515;
+        color: white;
+        border-color: #151515;
+      }
+
       .cart-icon {
         width: 15px;
         height: 15px;
+
+        flex-shrink: 0;
       }
 
-      /* Thank you page */
+
+      /* =================================
+         INFO BAR
+      ================================= */
+
+      .info-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 12px 40px;
+
+        border-bottom: 1px solid #bdbbb5;
+
+        font-family: Arial, sans-serif;
+
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+
+        color: #666;
+      }
+
+      .info-bar span {
+        white-space: nowrap;
+      }
+
+
+      /* =================================
+         MAIN
+      ================================= */
+
       .thankyou-page {
+        width: 100%;
         max-width: 680px;
+
         margin: 0 auto;
+
         padding: 50px 40px 80px;
       }
 
+
+      /* =================================
+         ORDER LABEL
+      ================================= */
+
       .order-received-label {
         font-family: Arial, sans-serif;
+
         font-size: 10px;
+
         letter-spacing: 1.8px;
+
         color: #666;
+
         margin: 0 0 16px;
       }
 
-      /* Colorful 3D order number */
+
+      /* =================================
+         ORDER ID
+      ================================= */
+
       .order-id {
-        font-size: 64px;
+        font-size: clamp(42px, 8vw, 64px);
+
         font-weight: 500;
+
         margin: 0 0 22px;
+
         letter-spacing: -1.5px;
+
         line-height: 1;
+
         color: #151515;
+
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
       }
 
       .order-id-text {
         position: relative;
+
         display: inline-block;
       }
 
       .order-id-text::before,
       .order-id-text::after {
         content: attr(data-text);
+
         position: absolute;
+
         top: 0;
         left: 0;
+
         width: 100%;
         height: 100%;
       }
 
       .order-id-text::before {
         color: #ff2a6d;
+
         z-index: -1;
+
         transform: translate(-2px, 1px);
       }
 
       .order-id-text::after {
         color: #05d9e8;
+
         z-index: -2;
+
         transform: translate(2px, -1px);
       }
 
+
+      /* =================================
+         THANK YOU
+      ================================= */
+
       .thank-you-name {
-        font-size: 28px;
+        font-size: clamp(24px, 5vw, 28px);
+
         font-weight: 400;
+
+        line-height: 1.2;
+
         margin: 0 0 14px;
+
+        overflow-wrap: anywhere;
       }
 
       .thank-you-text {
         font-family: Georgia, serif;
+
         font-size: 16px;
+
         line-height: 1.55;
+
         color: #444;
+
         margin: 0 0 28px;
       }
 
+
+      /* =================================
+         WHATSAPP CONFIRM BUTTON
+      ================================= */
+
       .confirm-whatsapp-btn {
         display: inline-flex;
+
         align-items: center;
+        justify-content: center;
+
         gap: 10px;
+
         background: #188653;
+
         color: white;
+
         text-decoration: none;
+
         font-family: Arial, sans-serif;
+
         font-size: 12px;
+
         font-weight: 700;
+
         letter-spacing: 1.4px;
+
         padding: 14px 22px;
+
         margin-bottom: 40px;
+
+        min-height: 46px;
+
+transition:
+  background 0.2s ease,
+  transform 0.2s ease;
       }
 
       .confirm-whatsapp-btn:hover {
         background: #146c44;
+
+        transform: translateY(-1px);
       }
 
       .confirm-whatsapp-btn svg {
         flex-shrink: 0;
       }
 
-      /* Table */
+
+      /* =================================
+         ORDER TABLE
+      ================================= */
+
       .order-table-wrap {
+        width: 100%;
+
         margin-bottom: 36px;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
       }
+
       .order-table {
         width: 100%;
+
         border-collapse: collapse;
+
         font-family: Georgia, serif;
+
         font-size: 14px;
+
+        table-layout: fixed;
       }
+
       .order-table th {
         text-align: left;
+
         font-family: Arial, sans-serif;
+
         font-size: 10px;
+
         letter-spacing: 1.4px;
+
         color: #666;
-        padding: 10px 0;
+
+        padding: 10px 8px 10px 0;
+
         border-bottom: 1px solid #ccc;
+
         font-weight: 400;
       }
+
       .order-table td {
-        padding: 12px 0;
+        padding: 12px 8px 12px 0;
+
         border-bottom: 1px solid #e5e5e5;
-      }
-      .order-table .total-row td {
-        border-bottom: none;
-        padding-top: 16px;
+
+        vertical-align: top;
+
+        overflow-wrap: anywhere;
+
+        word-break: normal;
       }
 
-      /* Shipped to */
+      /* Column widths */
+
+      .order-table th:nth-child(1),
+      .order-table td:nth-child(1) {
+        width: 45%;
+      }
+
+      .order-table th:nth-child(2),
+      .order-table td:nth-child(2) {
+        width: 30%;
+      }
+
+      .order-table th:nth-child(3),
+      .order-table td:nth-child(3) {
+        width: 25%;
+
+        text-align: right;
+
+        padding-right: 0;
+
+        white-space: nowrap;
+      }
+
+
+      /* Total */
+
+      .order-table .total-row td {
+        background: #f0efeb;
+
+        border-bottom: none;
+
+        padding: 14px 10px;
+
+        vertical-align: middle;
+      }
+
+      .order-table .total-row td:first-child {
+        padding-left: 10px;
+      }
+
+      .order-table .total-row td:last-child {
+        padding-right: 10px;
+      }
+
+
+      /* =================================
+         DELIVERY
+      ================================= */
+
       .shipped-to {
         margin-bottom: 30px;
-      }
-     
 
+        width: 100%;
+      }
 
       .shipped-label {
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 1.6px;
-  color: #666;
-  margin: 0 0 8px;
-}
+        font-family: Arial, sans-serif;
 
-.shipped-to p {
-  margin: 0 0 3px;
-  font-size: 15px;
-  line-height: 1.4;
-}
+        font-size: 10px;
 
-.email-note {
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  color: #555;
-  margin: 28px 0 24px;
-}
+        letter-spacing: 1.6px;
 
-.email-note a {
-  color: #008ca3;
-  text-decoration: none;
-}
+        color: #666;
 
-.email-note a:hover {
-  text-decoration: underline;
-}
+        margin: 0 0 8px;
+      }
 
-/* Light background on Total row (like source) */
-.order-table .total-row td {
-  background: #f0efeb;
-  border-bottom: none;
-  padding: 14px 10px;
-}
+      .shipped-to p {
+        margin: 0 0 3px;
 
-.order-table .total-row td:first-child {
-  padding-left: 10px;
-}
+        font-size: 15px;
+
+        line-height: 1.4;
+
+        overflow-wrap: anywhere;
+      }
 
 
+      /* =================================
+         FACEBOOK NOTE
+      ================================= */
+
+      .email-note {
+        font-family: Arial, sans-serif;
+
+        font-size: 13px;
+
+        line-height: 1.5;
+
+        color: #555;
+
+        margin: 28px 0 24px;
+
+        overflow-wrap: anywhere;
+      }
+
+      .email-note a {
+        color: #008ca3;
+
+        text-decoration: none;
+
+        overflow-wrap: anywhere;
+      }
+
+      .email-note a:hover {
+        text-decoration: underline;
+      }
+
+
+      /* =================================
+         BACK BUTTON
+      ================================= */
 
       .back-to-edition {
+        display: inline-block;
+
         font-family: Arial, sans-serif;
+
         font-size: 11px;
+
         letter-spacing: 1.5px;
+
         color: #008ca3;
+
         text-decoration: none;
+
+        padding: 6px 0;
       }
+
       .back-to-edition:hover {
         color: #006d7a;
       }
 
-      /* Footer */
+
+      /* =================================
+         FOOTER
+      ================================= */
+
       .footer {
+        width: 100%;
+
         padding: 40px 40px 60px;
       }
+
       .footer-inner {
         display: flex;
+
         justify-content: space-between;
+        align-items: center;
+
+        gap: 25px;
+
         padding-top: 24px;
+
         border-top: 1px solid #151515;
+
         font-family: Arial, sans-serif;
+
         font-size: 10px;
+
         letter-spacing: 1.5px;
       }
-      .footer-left { color: #666; }
+
+      .footer-left {
+        color: #666;
+
+        overflow-wrap: anywhere;
+      }
+
+      .footer-right {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 30px;
+
+        flex-wrap: wrap;
+      }
+
       .footer-right a {
         color: #008ca3;
+
         text-decoration: none;
-        margin-left: 30px;
+
+        white-space: nowrap;
       }
 
-      @media (max-width: 600px) {
-        .thankyou-page {
-          padding: 40px 20px 60px;
-        }
-        .order-id {
-          font-size: 42px;
-        }
+      .footer-right a:hover {
+        color: #006d7a;
       }
 
 
+      /* =================================
+         FLOATING BUTTONS
+      ================================= */
 
-
-       .floating-buttons {
+      .floating-buttons {
         position: fixed;
-        bottom: 24px;
+
         right: 24px;
+        bottom: 24px;
+
         display: flex;
+
         flex-direction: column;
+
         align-items: flex-end;
+
         gap: 12px;
+
         z-index: 9999;
+
+        max-width: calc(100vw - 32px);
       }
 
       .float-btn {
         display: flex;
+
         align-items: center;
         justify-content: center;
+
         gap: 8px;
+
         text-decoration: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        transition: transform 0.2s ease;
+
+        box-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.15);
+
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
-      .float-btn:hover { transform: translateY(-2px); }
+      .float-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+          0 6px 16px rgba(0, 0, 0, 0.2);
+      }
 
       .fb-btn {
         width: 44px;
         height: 44px;
+
         border-radius: 50%;
+
         background: #181818;
+
         color: white;
+
+        flex-shrink: 0;
       }
 
       .wa-btn {
-        height: 44px;
+        min-height: 44px;
+
         padding: 0 18px;
+
         border-radius: 22px;
+
         background: #188653;
+
         color: white;
+
         font-family: Arial, sans-serif;
+
         font-size: 10px;
+
         font-weight: bold;
+
         letter-spacing: 1.5px;
+
+        white-space: nowrap;
       }
 
 
+      /* ==========================================
+         TABLET
+         601px — 900px
+      ========================================== */
+/* ========================================== */
+/* TABLET */
+/* 601px — 900px */
+/* ========================================== */
+
+@media (max-width: 900px) {
+
+  .header {
+    padding: 30px 24px 0;
+  }
+
+  .info-bar {
+    padding-left: 24px;
+    padding-right: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+  }
+
+  .thankyou-page {
+    max-width: 680px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
 
+/* ========================================== */
+/* MOBILE */
+/* 600px and below */
+/* ========================================== */
+
+@media (max-width: 600px) {
+
+  /* ================================= */
+  /* GLOBAL MOBILE SAFETY */
+  /* ================================= */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
 
+  /* ================================= */
+  /* HEADER */
+  /* ================================= */
 
+  .header {
+    padding: 18px 16px 0;
+  }
+
+  .double-lines {
+    margin-bottom: 16px;
+  }
+
+  .header-content {
+    gap: 10px;
+    padding-bottom: 16px;
+    min-width: 0;
+  }
+
+  .logo-wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .logo-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .logo {
+    min-width: 0;
+    font-size: clamp(30px, 9vw, 40px);
+    letter-spacing: 2px;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+
+  .right-side {
+    flex-shrink: 0;
+    gap: 7px;
+  }
+
+  .right-side a {
+    display: none;
+  }
+
+  .cart-header-btn {
+    padding: 8px 9px;
+    gap: 5px;
+    min-height: 36px;
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+
+  .cart-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  /* ================================= */
+  /* INFO BAR */
+  /* ================================= */
+
+  .info-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 0;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    text-align: center;
+  }
+
+  .info-bar span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 5px;
+    white-space: normal;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .info-bar span:nth-child(1),
+  .info-bar span:nth-child(2) {
+    border-bottom: 1px solid #d4d2cc;
+  }
+
+  .info-bar span:nth-child(1),
+  .info-bar span:nth-child(3) {
+    border-right: 1px solid #d4d2cc;
+  }
+
+
+  /* ================================= */
+  /* MAIN PAGE */
+  /* ================================= */
+
+  .thankyou-page {
+    width: 100%;
+    max-width: none;
+    padding: 32px 16px 60px;
+  }
+
+
+  /* ================================= */
+  /* ORDER RECEIVED */
+  /* ================================= */
+
+  .order-received-label {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+    line-height: 1.5;
+    margin-bottom: 11px;
+  }
+
+
+  /* ================================= */
+  /* ORDER ID */
+  /* ================================= */
+
+  .order-id {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(34px, 11vw, 50px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .order-id-text {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* ================================= */
+  /* THANK YOU MESSAGE */
+  /* ================================= */
+
+  .thank-you-name {
+    font-size: clamp(22px, 6vw, 26px);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .thank-you-text {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+
+  /* ================================= */
+  /* WHATSAPP BUTTON */
+  /* ================================= */
+
+  .confirm-whatsapp-btn {
+    width: 100%;
+    max-width: 100%;
+    min-height: 46px;
+    margin-bottom: 32px;
+    padding: 14px 15px;
+    font-size: 9px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .confirm-whatsapp-btn svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+
+  /* ================================= */
+  /* ORDER TABLE */
+  /* ================================= */
+
+  .order-table-wrap {
+    width: 100%;
+    margin-bottom: 28px;
+    overflow-x: hidden;
+  }
+
+  .order-table {
+    width: 100%;
+    max-width: 100%;
+    font-size: 12px;
+    table-layout: fixed;
+  }
+
+  .order-table th {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    padding: 8px 4px 8px 0;
+    line-height: 1.3;
+  }
+
+  .order-table td {
+    padding: 10px 4px 10px 0;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Product */
+  .order-table th:nth-child(1),
+  .order-table td:nth-child(1) {
+    width: 43%;
+  }
+
+  /* Quantity / details */
+  .order-table th:nth-child(2),
+  .order-table td:nth-child(2) {
+    width: 32%;
+  }
+
+  /* Price */
+  .order-table th:nth-child(3),
+  .order-table td:nth-child(3) {
+    width: 25%;
+    padding-right: 0;
+    text-align: right;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Total row */
+  .order-table .total-row td {
+    padding: 12px 6px;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .order-table .total-row td:first-child {
+    padding-left: 6px;
+  }
+
+  .order-table .total-row td:last-child {
+    padding-right: 6px;
+  }
+
+
+  /* ================================= */
+  /* DELIVERY */
+  /* ================================= */
+
+  .shipped-to {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .shipped-label {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+    margin-bottom: 7px;
+  }
+
+  .shipped-to p {
+    font-size: 14px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* ================================= */
+  /* EMAIL / FACEBOOK NOTE */
+  /* ================================= */
+
+  .email-note {
+    font-size: 11px;
+    line-height: 1.65;
+    margin: 22px 0 20px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .email-note a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+
+  /* ================================= */
+  /* BACK BUTTON */
+  /* ================================= */
+
+  .back-to-edition {
+    display: inline-block;
+    max-width: 100%;
+    padding: 7px 0;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+
+  /* ================================= */
+  /* FOOTER */
+  /* ================================= */
+
+  .footer {
+    padding: 28px 16px 85px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-top: 20px;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .footer-left {
+    width: 100%;
+    font-size: 8px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .footer-right a {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+
+  /* ================================= */
+  /* FLOATING BUTTONS */
+  /* ================================= */
+
+  .floating-buttons {
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    gap: 8px;
+    max-width: calc(100vw - 20px);
+  }
+
+  .fb-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fb-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .wa-btn {
+    min-height: 40px;
+    height: 40px;
+    padding: 0 13px;
+    border-radius: 20px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .wa-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+/* ========================================== */
+/* VERY SMALL PHONES */
+/* 380px and below */
+/* ========================================== */
+
+@media (max-width: 380px) {
+
+  /* HEADER */
+
+  .header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .header-content {
+    gap: 6px;
+  }
+
+  .logo-wrapper {
+    gap: 6px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .cart-header-btn {
+    padding: 7px;
+    min-height: 34px;
+    font-size: 7px;
+  }
+
+  .cart-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+
+  /* INFO BAR */
+
+  .info-bar {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .info-bar span {
+    min-height: 36px;
+    padding: 6px 4px;
+  }
+
+
+  /* MAIN */
+
+  .thankyou-page {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 28px;
+  }
+
+
+  /* ORDER ID */
+
+  .order-id {
+    font-size: clamp(32px, 11vw, 42px);
+    letter-spacing: -0.8px;
+  }
+
+
+  /* TEXT */
+
+  .thank-you-name {
+    font-size: 21px;
+  }
+
+  .thank-you-text {
+    font-size: 14px;
+  }
+
+
+  /* WHATSAPP */
+
+  .confirm-whatsapp-btn {
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  /* TABLE */
+
+  .order-table {
+    font-size: 11px;
+  }
+
+  .order-table th {
+    font-size: 6.5px;
+    letter-spacing: 0.5px;
+  }
+
+  .order-table td {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .order-table .total-row td {
+    font-size: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+
+  /* DELIVERY */
+
+  .shipped-to p {
+    font-size: 13px;
+  }
+
+
+  /* FOOTER */
+
+  .footer {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .footer-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+
+  /* FLOATING WHATSAPP */
+
+  .wa-btn span {
+    display: none;
+  }
+
+  .wa-btn {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+    border-radius: 50%;
+  }
+}
+
+
+/* ========================================== */
+/* TOUCH DEVICES */
+/* ========================================== */
+
+@media (hover: none) {
+
+  .float-btn:hover {
+    transform: none;
+  }
+
+  .confirm-whatsapp-btn:hover {
+    transform: none;
+    background: #188653;
+  }
+
+  .cart-header-btn:hover {
+    background: transparent;
+    color: #151515;
+    border-color: #999;
+  }
+
+  .right-side a:hover,
+  .email-note a:hover,
+  .back-to-edition:hover {
+    color: #008ca3;
+    text-decoration: none;
+  }
+}
 
     </style>
   </body>

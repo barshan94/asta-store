@@ -6,26 +6,48 @@ const title = "ASTA — Mail order coupon";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
     <title>{title}</title>
   </head>
 
   <body>
+
+    <!-- ========================= -->
     <!-- HEADER -->
+    <!-- ========================= -->
+
     <header class="header">
+
       <div class="header-inner">
+
         <div class="double-lines"></div>
 
         <div class="header-content">
+
           <div class="logo-wrapper">
+
             <div class="logo-icon">
-              <img src="/images/logo.jpg" alt="ASTA Logo" class="logo-img" />
+<img
+  id="siteLogo"
+  alt="ASTA Logo"
+  class="logo-img"
+/>
             </div>
-            <div class="logo">ASTA</div>
+
+            <div class="logo">
+              ASTA
+            </div>
+
           </div>
 
+
           <div class="right-side">
+
             <a
+              id="headerFacebookLink"
               href="https://www.facebook.com/astabagsbd"
               target="_blank"
               rel="noopener noreferrer"
@@ -39,10 +61,9 @@ const title = "ASTA — Mail order coupon";
               class="cart-header-btn"
               onclick="window.location.href='/'"
             >
+
               <svg
                 class="cart-icon"
-                width="16"
-                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -55,46 +76,93 @@ const title = "ASTA — Mail order coupon";
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
 
-              <span>CART <span id="cartCount">0</span></span>
+              <span>
+                CART <span id="cartCount">0</span>
+              </span>
+
             </button>
+
           </div>
+
         </div>
+
       </div>
+
     </header>
 
+
+    <!-- ========================= -->
     <!-- INFO BAR -->
+    <!-- ========================= -->
+
     <div class="info-bar">
+
       <span>EDITION NO. 04</span>
+
       <span>HANDMADE LEATHER · DHAKA</span>
+
       <span>CASH ON DELIVERY</span>
+
       <span>EXCHANGE WITHIN THREE DAYS</span>
+
     </div>
 
+
+    <!-- ========================= -->
     <!-- BACK LINK -->
+    <!-- ========================= -->
+
     <div class="back-link-wrap">
-      <a href="/" class="back-link">← BACK TO THE EDITION</a>
+
+      <a
+        href="/"
+        class="back-link"
+      >
+        ← BACK TO THE EDITION
+      </a>
+
     </div>
 
-    <!-- MAIN CONTENT -->
+
+    <!-- ========================= -->
+    <!-- MAIN -->
+    <!-- ========================= -->
+
     <main class="coupon-page">
 
       <div class="coupon-header">
-        <h1>Mail order coupon</h1>
-        <span class="coupon-note">FILL IN INK · WE CALL TO CONFIRM</span>
+
+        <h1>
+          Mail order coupon
+        </h1>
+
+        <span class="coupon-note">
+          FILL IN INK · WE CALL TO CONFIRM
+        </span>
+
       </div>
+
 
       <div class="coupon-grid">
 
+
         <!-- ========================= -->
-        <!-- LEFT: ORDER FORM -->
+        <!-- ORDER FORM -->
         <!-- ========================= -->
 
-        <form id="orderForm" class="coupon-form" novalidate>
+        <form
+          id="orderForm"
+          class="coupon-form"
+          novalidate
+        >
+
 
           <!-- NAME + PHONE -->
+
           <div class="form-row">
 
             <div class="form-group">
+
               <label for="fullName">
                 FULL NAME <span class="req">*</span>
               </label>
@@ -106,9 +174,12 @@ const title = "ASTA — Mail order coupon";
                 required
                 placeholder="Your name"
               />
+
             </div>
 
+
             <div class="form-group">
+
               <label for="phone">
                 PHONE (WHATSAPP) <span class="req">*</span>
               </label>
@@ -120,15 +191,21 @@ const title = "ASTA — Mail order coupon";
                 required
                 placeholder="01XXXXXXXXX"
               />
+
             </div>
 
           </div>
 
+
           <!-- EMAIL + DISTRICT -->
+
           <div class="form-row">
 
             <div class="form-group">
-              <label for="email">EMAIL</label>
+
+              <label for="email">
+                EMAIL
+              </label>
 
               <input
                 type="email"
@@ -136,33 +213,77 @@ const title = "ASTA — Mail order coupon";
                 name="email"
                 placeholder="optional"
               />
+
             </div>
 
+
             <div class="form-group">
+
               <label for="district">
-                DISTRICT / AREA <span class="req">*</span>
+                DISTRICT / AREA
+                <span class="req">*</span>
               </label>
 
-              <select id="district" name="district" required>
-                <option value="">Select</option>
-                <option value="Dhaka">Dhaka</option>
-                <option value="Chattogram">Chattogram</option>
-                <option value="Sylhet">Sylhet</option>
-                <option value="Rajshahi">Rajshahi</option>
-                <option value="Khulna">Khulna</option>
-                <option value="Barishal">Barishal</option>
-                <option value="Rangpur">Rangpur</option>
-                <option value="Mymensingh">Mymensingh</option>
-                <option value="Other">Other</option>
+              <select
+                id="district"
+                name="district"
+                required
+              >
+
+                <option value="">
+                  Select
+                </option>
+
+                <option value="Dhaka">
+                  Dhaka
+                </option>
+
+                <option value="Chattogram">
+                  Chattogram
+                </option>
+
+                <option value="Sylhet">
+                  Sylhet
+                </option>
+
+                <option value="Rajshahi">
+                  Rajshahi
+                </option>
+
+                <option value="Khulna">
+                  Khulna
+                </option>
+
+                <option value="Barishal">
+                  Barishal
+                </option>
+
+                <option value="Rangpur">
+                  Rangpur
+                </option>
+
+                <option value="Mymensingh">
+                  Mymensingh
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
               </select>
+
             </div>
 
           </div>
 
+
           <!-- ADDRESS -->
+
           <div class="form-group full">
+
             <label for="address">
-              FULL ADDRESS <span class="req">*</span>
+              FULL ADDRESS
+              <span class="req">*</span>
             </label>
 
             <textarea
@@ -172,22 +293,25 @@ const title = "ASTA — Mail order coupon";
               required
               placeholder="House, road, area, landmark"
             ></textarea>
+
           </div>
 
 
-          <!-- ========================= -->
           <!-- PAYMENT -->
-          <!-- ========================= -->
 
           <div class="form-group full">
 
             <label>
-              PAYMENT <span class="req">*</span>
+              PAYMENT
+              <span class="req">*</span>
             </label>
+
 
             <div class="payment-options">
 
+
               <!-- COD -->
+
               <label class="payment-option">
 
                 <input
@@ -200,16 +324,22 @@ const title = "ASTA — Mail order coupon";
                 <span class="radio-custom"></span>
 
                 <div>
-                  <strong>Cash on delivery</strong>
+
+                  <strong>
+                    Cash on delivery
+                  </strong>
+
                   <small>
                     Pay the rider when the bag arrives.
                   </small>
+
                 </div>
 
               </label>
 
 
               <!-- BKASH -->
+
               <label class="payment-option">
 
                 <input
@@ -221,16 +351,22 @@ const title = "ASTA — Mail order coupon";
                 <span class="radio-custom"></span>
 
                 <div>
-                  <strong>bKash — send money</strong>
+
+                  <strong>
+                    bKash — send money
+                  </strong>
+
                   <small>
                     Send to 01577 488708, then write the TrxID below.
                   </small>
+
                 </div>
 
               </label>
 
 
               <!-- NAGAD -->
+
               <label class="payment-option">
 
                 <input
@@ -242,16 +378,22 @@ const title = "ASTA — Mail order coupon";
                 <span class="radio-custom"></span>
 
                 <div>
-                  <strong>Nagad — send money</strong>
+
+                  <strong>
+                    Nagad — send money
+                  </strong>
+
                   <small>
                     Send to 01577 488708, then write the TrxID below.
                   </small>
+
                 </div>
 
               </label>
 
 
               <!-- BANK -->
+
               <label class="payment-option">
 
                 <input
@@ -263,33 +405,40 @@ const title = "ASTA — Mail order coupon";
                 <span class="radio-custom"></span>
 
                 <div>
-                  <strong>Bank transfer</strong>
+
+                  <strong>
+                    Bank transfer
+                  </strong>
+
                   <small>
                     We share account details on WhatsApp; add the slip number.
                   </small>
+
                 </div>
 
               </label>
 
             </div>
+
           </div>
 
 
-          <!-- ========================= -->
           <!-- PAYMENT REFERENCE -->
-          <!-- Hidden for COD -->
-          <!-- Appears for BKASH/NAGAD/BANK -->
-          <!-- ========================= -->
 
           <div
             class="form-group full payment-reference"
             id="paymentReference"
-            style="display: none;"
+            style="display:none;"
           >
 
             <label for="paymentReferenceInput">
+
               PAYMENT REFERENCE / TRXID
-              <span class="req">*</span>
+
+              <span class="req">
+                *
+              </span>
+
             </label>
 
             <input
@@ -310,6 +459,7 @@ const title = "ASTA — Mail order coupon";
 
 
           <!-- ORDER NOTES -->
+
           <div class="form-group full">
 
             <label for="notes">
@@ -327,16 +477,18 @@ const title = "ASTA — Mail order coupon";
 
 
           <!-- ERROR -->
+
           <p
             id="formError"
             class="form-error"
-            style="display: none;"
+            style="display:none;"
           >
             Please fill in your name, phone and full address.
           </p>
 
 
           <!-- PLACE ORDER -->
+
           <button
             type="submit"
             class="place-order-btn"
@@ -354,7 +506,7 @@ const title = "ASTA — Mail order coupon";
 
 
         <!-- ========================= -->
-        <!-- RIGHT: ORDER SUMMARY -->
+        <!-- ORDER SUMMARY -->
         <!-- ========================= -->
 
         <aside class="order-summary">
@@ -365,25 +517,48 @@ const title = "ASTA — Mail order coupon";
 
           <div id="summaryItems"></div>
 
+
           <div class="summary-totals">
 
             <div class="summary-row">
-              <span>Subtotal</span>
-              <span id="summarySubtotal">৳0</span>
-            </div>
 
-            <div class="summary-row">
               <span>
-                Delivery ·
-                <span id="deliveryLabel">inside Dhaka</span>
+                Subtotal
               </span>
 
-              <span id="summaryDelivery">৳80</span>
+              <span id="summarySubtotal">
+                ৳0
+              </span>
+
             </div>
 
+
+            <div class="summary-row">
+
+              <span>
+                Delivery ·
+                <span id="deliveryLabel">
+                  inside Dhaka
+                </span>
+              </span>
+
+              <span id="summaryDelivery">
+                ৳80
+              </span>
+
+            </div>
+
+
             <div class="summary-row total-row">
-              <span>Total</span>
-              <span id="summaryTotal">৳0</span>
+
+              <span>
+                Total
+              </span>
+
+              <span id="summaryTotal">
+                ৳0
+              </span>
+
             </div>
 
           </div>
@@ -391,6 +566,7 @@ const title = "ASTA — Mail order coupon";
         </aside>
 
       </div>
+
     </main>
 
 
@@ -406,6 +582,7 @@ const title = "ASTA — Mail order coupon";
           ASTA BAGS · DHAKA, BANGLADESH
         </div>
 
+
         <div class="footer-right">
 
           <a
@@ -416,13 +593,14 @@ const title = "ASTA — Mail order coupon";
             FACEBOOK
           </a>
 
-          <a
-            href="https://api.whatsapp.com/send/?phone=%2B8801577488708"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            +880 1577 488708
-          </a>
+<a
+  id="footerWhatsappLink"
+  href="#"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  +880 1577 488708
+</a>
 
         </div>
 
@@ -437,6 +615,7 @@ const title = "ASTA — Mail order coupon";
 
     <div class="floating-buttons">
 
+
       <a
         href="https://www.facebook.com/astabagsbd"
         target="_blank"
@@ -444,33 +623,36 @@ const title = "ASTA — Mail order coupon";
         class="float-btn fb-btn"
         aria-label="Facebook"
       >
+
         <svg
-          width="18"
-          height="18"
           viewBox="0 0 24 24"
           fill="currentColor"
         >
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
         </svg>
+
       </a>
 
 
-      <a
-        href="https://api.whatsapp.com/send/?phone=%2B8801577488708"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="float-btn wa-btn"
-      >
+<a
+  id="floatingWhatsapp"
+  href="#"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="float-btn wa-btn"
+>
+
         <svg
-          width="18"
-          height="18"
           viewBox="0 0 24 24"
           fill="currentColor"
         >
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
         </svg>
 
-        <span>WHATSAPP</span>
+        <span>
+          WHATSAPP
+        </span>
+
       </a>
 
     </div>
@@ -486,22 +668,19 @@ const title = "ASTA — Mail order coupon";
         from 'https://esm.sh/@supabase/supabase-js@2';
 
 
-      // ==========================================
-      // SUPABASE
-      // ==========================================
-
-      const supabase = createClient(
-        'https://ryfufhtymvjeveppwjoj.supabase.co',
-        'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw'
-      );
+ const supabase = createClient(
+  'https://ryfufhtymvjeveppwjoj.supabase.co',
+  'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw',
+  { auth: { storageKey: 'asta-admin-auth' } }
+);
 
 
-      // ==========================================
-      // CART
-      // ==========================================
+      /* CART */
 
       const cart =
-        JSON.parse(localStorage.getItem('asta_cart')) || [];
+        JSON.parse(
+          localStorage.getItem('asta_cart')
+        ) || [];
 
 
       if (cart.length === 0) {
@@ -511,31 +690,36 @@ const title = "ASTA — Mail order coupon";
 
       const totalItems =
         cart.reduce(
-          (sum, item) => sum + item.quantity,
+          (sum, item) =>
+            sum + item.quantity,
           0
         );
 
 
-      document.getElementById('cartCount').textContent =
-        totalItems;
+      document
+        .getElementById('cartCount')
+        .textContent = totalItems;
 
 
       let subtotal = 0;
 
 
       cart.forEach(item => {
-        subtotal += item.price * item.quantity;
+
+        subtotal +=
+          item.price * item.quantity;
+
       });
 
 
-      // ==========================================
-      // DELIVERY
-      // ==========================================
+      /* DELIVERY */
 
       let delivery = 80;
 
       const districtSelect =
-        document.getElementById('district');
+        document.getElementById(
+          'district'
+        );
 
 
       function updateTotals() {
@@ -545,39 +729,56 @@ const title = "ASTA — Mail order coupon";
           districtSelect.value === '';
 
 
-        delivery = isDhaka ? 80 : 130;
-
-
-        document.getElementById('deliveryLabel').textContent =
+        delivery =
           isDhaka
-            ? 'inside Dhaka'
-            : 'outside Dhaka';
+            ? 80
+            : 130;
 
 
-        document.getElementById('summaryDelivery').textContent =
-          `৳${delivery}`;
+        document
+          .getElementById('deliveryLabel')
+          .textContent =
+            isDhaka
+              ? 'inside Dhaka'
+              : 'outside Dhaka';
 
 
-        document.getElementById('summarySubtotal').textContent =
-          `৳${subtotal.toLocaleString()}`;
+        document
+          .getElementById('summaryDelivery')
+          .textContent =
+            `৳${delivery}`;
 
 
-        document.getElementById('summaryTotal').textContent =
-          `৳${(subtotal + delivery).toLocaleString()}`;
+        document
+          .getElementById('summarySubtotal')
+          .textContent =
+            `৳${subtotal.toLocaleString()}`;
 
 
-        document.getElementById('placeOrderBtn').textContent =
-          `PLACE ORDER · ৳${(subtotal + delivery).toLocaleString()}`;
+        document
+          .getElementById('summaryTotal')
+          .textContent =
+            `৳${(
+              subtotal + delivery
+            ).toLocaleString()}`;
+
+
+        document
+          .getElementById('placeOrderBtn')
+          .textContent =
+            `PLACE ORDER · ৳${(
+              subtotal + delivery
+            ).toLocaleString()}`;
 
       }
 
 
-      // ==========================================
-      // ORDER SUMMARY
-      // ==========================================
+      /* ORDER SUMMARY */
 
       const summaryContainer =
-        document.getElementById('summaryItems');
+        document.getElementById(
+          'summaryItems'
+        );
 
 
       summaryContainer.innerHTML =
@@ -588,6 +789,7 @@ const title = "ASTA — Mail order coupon";
 
 
           return `
+
             <div class="summary-item">
 
               <img
@@ -613,6 +815,7 @@ const title = "ASTA — Mail order coupon";
               </div>
 
             </div>
+
           `;
 
         }).join('');
@@ -627,9 +830,7 @@ const title = "ASTA — Mail order coupon";
       );
 
 
-      // ==========================================
-      // PAYMENT REFERENCE SHOW / HIDE
-      // ==========================================
+      /* PAYMENT */
 
       const paymentRadios =
         document.querySelectorAll(
@@ -663,26 +864,35 @@ const title = "ASTA — Mail order coupon";
           )?.value;
 
 
-        // CASH ON DELIVERY
-        if (selectedPayment === 'cod') {
+        if (
+          selectedPayment === 'cod'
+        ) {
 
-          paymentReference.style.display = 'none';
+          paymentReference.style.display =
+            'none';
 
-          paymentReferenceInput.value = '';
+          paymentReferenceInput.value =
+            '';
 
-          paymentReferenceInput.required = false;
+          paymentReferenceInput.required =
+            false;
 
           return;
+
         }
 
 
-        // BKASH / NAGAD / BANK
-        paymentReference.style.display = 'flex';
+        paymentReference.style.display =
+          'flex';
 
-        paymentReferenceInput.required = true;
+        paymentReferenceInput.required =
+          true;
 
 
-        if (selectedPayment === 'bkash') {
+        if (
+          selectedPayment === 'bkash' ||
+          selectedPayment === 'nagad'
+        ) {
 
           paymentReferenceInput.placeholder =
             'e.g. 9F2K4L8Q1';
@@ -693,58 +903,49 @@ const title = "ASTA — Mail order coupon";
         }
 
 
-        if (selectedPayment === 'nagad') {
-
-          paymentReferenceInput.placeholder =
-            'e.g. 9F2K4L8Q1';
-
-          paymentReferenceNote.textContent =
-            'Send Money to 01577 488708 (personal), then paste the TrxID.';
-
-        }
-
-
-        if (selectedPayment === 'bank') {
+        if (
+          selectedPayment === 'bank'
+        ) {
 
           paymentReferenceInput.placeholder =
             'e.g. Bank reference number';
 
           paymentReferenceNote.textContent =
-            'Message us on WhatsApp for account details.';
+            'Add the bank transfer slip / reference number.';
 
         }
 
       }
 
 
-      paymentRadios.forEach(radio => {
+      paymentRadios.forEach(
+        radio => {
 
-        radio.addEventListener(
-          'change',
-          updatePaymentReference
-        );
+          radio.addEventListener(
+            'change',
+            updatePaymentReference
+          );
 
-      });
+        }
+      );
 
 
-      // Run once when page loads
       updatePaymentReference();
 
 
-      // ==========================================
-      // FORM SUBMIT
-      // ==========================================
+      /* FORM SUBMIT */
 
       document
         .getElementById('orderForm')
         .addEventListener(
           'submit',
-          async (e) => {
+          async e => {
 
             e.preventDefault();
 
 
-            const form = e.target;
+            const form =
+              e.target;
 
 
             const fullName =
@@ -791,7 +992,6 @@ const title = "ASTA — Mail order coupon";
               );
 
 
-            // REQUIRED CUSTOMER INFORMATION
             if (
               !fullName ||
               !phone ||
@@ -810,8 +1010,6 @@ const title = "ASTA — Mail order coupon";
             }
 
 
-            // PAYMENT REFERENCE REQUIRED
-            // ONLY FOR BKASH / NAGAD / BANK
             if (
               payment !== 'cod' &&
               !paymentReferenceValue
@@ -834,10 +1032,6 @@ const title = "ASTA — Mail order coupon";
               'none';
 
 
-            // ==========================================
-            // ORDER CALCULATION
-            // ==========================================
-
             const orderId =
               'AB-' +
               Math.floor(
@@ -856,15 +1050,13 @@ const title = "ASTA — Mail order coupon";
               subtotal + deliveryCost;
 
 
-            button.disabled = true;
+            button.disabled =
+              true;
+
 
             button.textContent =
               'PLACING ORDER...';
 
-
-            // ==========================================
-            // SAVE ORDER TO SUPABASE
-            // ==========================================
 
             const { data, error } =
               await supabase
@@ -877,7 +1069,8 @@ const title = "ASTA — Mail order coupon";
 
                   phone: phone,
 
-                  email: email || null,
+                  email:
+                    email || null,
 
                   district: district,
 
@@ -886,24 +1079,23 @@ const title = "ASTA — Mail order coupon";
                   payment: payment,
 
                   payment_reference:
-                    paymentReferenceValue || null,
+                    paymentReferenceValue ||
+                    null,
 
-                  notes: notes || null,
+                  notes:
+                    notes || null,
 
                   items: cart,
 
                   subtotal: subtotal,
 
-                  delivery: deliveryCost,
+                  delivery:
+                    deliveryCost,
 
                   total: total
 
                 }]);
 
-
-            // ==========================================
-            // SUPABASE ERROR
-            // ==========================================
 
             if (error) {
 
@@ -913,7 +1105,8 @@ const title = "ASTA — Mail order coupon";
               );
 
 
-              button.disabled = false;
+              button.disabled =
+                false;
 
 
               button.textContent =
@@ -927,15 +1120,10 @@ const title = "ASTA — Mail order coupon";
               errorEl.style.display =
                 'block';
 
-
               return;
 
             }
 
-
-            // ==========================================
-            // SUCCESS
-            // ==========================================
 
             localStorage.setItem(
               'asta_last_order',
@@ -964,7 +1152,8 @@ const title = "ASTA — Mail order coupon";
 
                 subtotal,
 
-                delivery: deliveryCost,
+                delivery:
+                  deliveryCost,
 
                 total
 
@@ -983,34 +1172,75 @@ const title = "ASTA — Mail order coupon";
           }
         );
 
+
+
+
+
+          
+
+
+
+
+
+
+
     </script>
 
 
     <!-- ========================= -->
-    <!-- CSS -->
+    <!-- GLOBAL CSS -->
     <!-- ========================= -->
 
     <style is:global>
 
+      * {
+        box-sizing: border-box;
+      }
+
+
+      html {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+
       body {
         margin: 0;
+        width: 100%;
+        overflow-x: hidden;
         background: #f4f3ef;
         color: #151515;
         font-family: Georgia, serif;
       }
 
 
+      img {
+        max-width: 100%;
+      }
+
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+
+      /* ========================= */
       /* HEADER */
+      /* ========================= */
 
       .header {
         width: 100%;
-        box-sizing: border-box;
-        padding: 40px 40px 0 40px;
+        padding: 40px 40px 0;
       }
 
+
       .header-inner {
-        max-width: 100%;
+        width: 100%;
       }
+
 
       .double-lines {
         height: 2px;
@@ -1019,35 +1249,42 @@ const title = "ASTA — Mail order coupon";
         margin-bottom: 24px;
       }
 
+
       .header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 30px;
         padding-bottom: 24px;
         border-bottom: 1px solid #bdbbb5;
       }
+
 
       .logo-wrapper {
         display: flex;
         align-items: center;
         gap: 16px;
+        min-width: 0;
       }
+
 
       .logo-icon {
         width: 70px;
         height: 70px;
-        background-color: #e6ff2b;
+        background: #e6ff2b;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
       }
 
+
       .logo-img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
+
 
       .logo {
         font-size: 58px;
@@ -1057,27 +1294,13 @@ const title = "ASTA — Mail order coupon";
       }
 
 
-      /* INFO BAR */
-
-      .info-bar {
-        display: flex;
-        justify-content: space-between;
-        padding: 12px 40px;
-        border-bottom: 1px solid #bdbbb5;
-        font-family: Arial, sans-serif;
-        font-size: 10px;
-        letter-spacing: 1.5px;
-        color: #666;
-      }
-
-
-      /* RIGHT HEADER */
-
       .right-side {
         display: flex;
         align-items: center;
         gap: 30px;
+        flex-shrink: 0;
       }
+
 
       .right-side a {
         text-decoration: none;
@@ -1086,6 +1309,7 @@ const title = "ASTA — Mail order coupon";
         font-size: 12px;
         letter-spacing: 1.5px;
       }
+
 
       .cart-header-btn {
         display: inline-flex;
@@ -1099,20 +1323,41 @@ const title = "ASTA — Mail order coupon";
         letter-spacing: 1.2px;
         color: #151515;
         cursor: pointer;
+        white-space: nowrap;
       }
+
 
       .cart-icon {
         width: 15px;
         height: 15px;
-        stroke: #151515;
       }
 
 
-      /* BACK LINK */
+      /* ========================= */
+      /* INFO BAR */
+      /* ========================= */
+
+      .info-bar {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 40px;
+        border-bottom: 1px solid #bdbbb5;
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: #666;
+      }
+
+
+      /* ========================= */
+      /* BACK */
+      /* ========================= */
 
       .back-link-wrap {
         padding: 28px 40px 0;
       }
+
 
       .back-link {
         font-family: Arial, sans-serif;
@@ -1122,27 +1367,29 @@ const title = "ASTA — Mail order coupon";
         text-decoration: none;
       }
 
-      .back-link:hover {
-        color: #006d7a;
-      }
 
-
-      /* COUPON PAGE */
+      /* ========================= */
+      /* MAIN */
+      /* ========================= */
 
       .coupon-page {
+        width: 100%;
         max-width: 1100px;
         margin: 0 auto;
         padding: 40px 40px 80px;
       }
 
+
       .coupon-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+        gap: 30px;
         margin-bottom: 40px;
         padding-bottom: 16px;
         border-bottom: 1px solid #bdbbb5;
       }
+
 
       .coupon-header h1 {
         margin: 0;
@@ -1151,47 +1398,60 @@ const title = "ASTA — Mail order coupon";
         letter-spacing: -0.5px;
       }
 
+
       .coupon-note {
         font-family: Arial, sans-serif;
         font-size: 10px;
         letter-spacing: 1.5px;
         color: #666;
+        white-space: nowrap;
       }
 
 
+      /* ========================= */
       /* GRID */
+      /* ========================= */
 
       .coupon-grid {
         display: grid;
-        grid-template-columns: 1.4fr 1fr;
+        grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr);
         gap: 60px;
         align-items: start;
       }
 
 
+      /* ========================= */
       /* FORM */
+      /* ========================= */
 
       .coupon-form {
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 22px;
       }
 
+
       .form-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
       }
 
+
       .form-group {
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 6px;
+        min-width: 0;
       }
+
 
       .form-group.full {
         grid-column: 1 / -1;
       }
+
 
       .form-group label {
         font-family: Arial, sans-serif;
@@ -1200,14 +1460,17 @@ const title = "ASTA — Mail order coupon";
         color: #555;
       }
 
+
       .req {
         color: #c44d6a;
       }
+
 
       .form-group input,
       .form-group select,
       .form-group textarea {
         width: 100%;
+        max-width: 100%;
         padding: 10px 0;
         border: none;
         border-bottom: 1px solid #151515;
@@ -1216,20 +1479,23 @@ const title = "ASTA — Mail order coupon";
         font-size: 15px;
         color: #151515;
         outline: none;
-        box-sizing: border-box;
       }
+
 
       .form-group textarea {
         resize: vertical;
         min-height: 70px;
       }
 
+
       .form-group select {
         cursor: pointer;
       }
 
 
-      /* PAYMENT OPTIONS */
+      /* ========================= */
+      /* PAYMENT */
+      /* ========================= */
 
       .payment-options {
         display: flex;
@@ -1238,17 +1504,19 @@ const title = "ASTA — Mail order coupon";
         margin-top: 8px;
       }
 
+
       .payment-option {
         display: flex;
         align-items: flex-start;
         gap: 12px;
         cursor: pointer;
-        margin-bottom: 2px;
       }
+
 
       .payment-option input {
         display: none;
       }
+
 
       .radio-custom {
         width: 16px;
@@ -1260,12 +1528,14 @@ const title = "ASTA — Mail order coupon";
         position: relative;
       }
 
+
       .payment-option input:checked + .radio-custom {
         border-color: #008ca3;
       }
 
+
       .payment-option input:checked + .radio-custom::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 3px;
         left: 3px;
@@ -1275,16 +1545,18 @@ const title = "ASTA — Mail order coupon";
         border-radius: 50%;
       }
 
+
       .payment-option strong {
         display: block;
         font-family: Georgia, serif;
         font-size: 15px;
         font-weight: 500;
         margin-bottom: 2px;
-        color: #151515;
       }
 
+
       .payment-option small {
+        display: block;
         font-family: Arial, sans-serif;
         font-size: 13px;
         color: #666;
@@ -1292,32 +1564,14 @@ const title = "ASTA — Mail order coupon";
       }
 
 
+      /* ========================= */
       /* PAYMENT REFERENCE */
+      /* ========================= */
 
       .payment-reference {
-        display: flex;
-        flex-direction: column;
         gap: 6px;
-        margin-top: 0;
       }
 
-      .payment-reference input {
-        width: 100%;
-        padding: 10px 0;
-        border: none;
-        border-bottom: 1px solid #151515;
-        background: transparent;
-        font-family: Georgia, serif;
-        font-size: 15px;
-        color: #151515;
-        outline: none;
-        box-sizing: border-box;
-      }
-
-      .payment-reference input::placeholder {
-        color: #777;
-        opacity: 1;
-      }
 
       .payment-reference-note {
         display: block;
@@ -1329,16 +1583,18 @@ const title = "ASTA — Mail order coupon";
       }
 
 
-      /* PLACE ORDER */
+      /* ========================= */
+      /* ORDER BUTTON */
+      /* ========================= */
 
       .place-order-btn {
-        display: inline-block !important;
-        width: auto !important;
-        max-width: max-content !important;
+        display: inline-block;
+        width: fit-content;
+        max-width: 100%;
         margin-top: 18px;
         padding: 14px 28px;
         background: #008ca3;
-        color: #ffffff;
+        color: white;
         border: none;
         font-family: Arial, sans-serif;
         font-size: 12px;
@@ -1346,12 +1602,13 @@ const title = "ASTA — Mail order coupon";
         letter-spacing: 1.6px;
         cursor: pointer;
         text-transform: uppercase;
-        text-align: center;
       }
+
 
       .place-order-btn:hover {
         background: #007a8f;
       }
+
 
       .place-order-btn:disabled {
         opacity: 0.7;
@@ -1359,50 +1616,54 @@ const title = "ASTA — Mail order coupon";
       }
 
 
-      /* FOOTER NOTE */
-
       .form-footer-note {
         font-family: Arial, sans-serif;
         font-size: 11px;
         color: #777;
         text-align: center;
         margin: 8px 0 0;
+        line-height: 1.5;
       }
 
-
-      /* ERROR */
 
       .form-error {
         font-family: Arial, sans-serif;
         font-size: 13px;
         color: #c44d6a;
-        margin: 12px 0 8px 0;
+        margin: 12px 0 8px;
         line-height: 1.4;
       }
 
 
+      /* ========================= */
       /* ORDER SUMMARY */
+      /* ========================= */
 
       .order-summary {
         position: sticky;
         top: 40px;
+        min-width: 0;
       }
+
 
       .your-order-title {
         font-family: Arial, sans-serif;
         font-size: 10px;
         letter-spacing: 1.6px;
         color: #666;
-        margin: 0 0 22px 0;
+        margin: 0 0 22px;
         font-weight: 400;
       }
+
 
       .summary-item {
         display: flex;
         gap: 14px;
         margin-bottom: 20px;
         align-items: flex-start;
+        min-width: 0;
       }
+
 
       .summary-img {
         width: 64px;
@@ -1412,10 +1673,12 @@ const title = "ASTA — Mail order coupon";
         background: #e8e6e0;
       }
 
+
       .summary-info {
         flex: 1;
         min-width: 0;
       }
+
 
       .summary-name {
         font-family: Georgia, serif;
@@ -1424,18 +1687,20 @@ const title = "ASTA — Mail order coupon";
         color: #151515;
       }
 
+
       .summary-meta {
         font-family: Georgia, serif;
         font-size: 13px;
         color: #666;
       }
 
+
       .summary-price {
         font-family: Georgia, serif;
         font-size: 14px;
         white-space: nowrap;
-        color: #151515;
       }
+
 
       .summary-totals {
         border-top: 1px solid #e2e1dc;
@@ -1443,14 +1708,17 @@ const title = "ASTA — Mail order coupon";
         margin-top: 8px;
       }
 
+
       .summary-row {
         display: flex;
         justify-content: space-between;
+        gap: 20px;
         font-family: Georgia, serif;
         font-size: 14px;
         margin-bottom: 10px;
         color: #333;
       }
+
 
       .total-row {
         font-size: 17px;
@@ -1462,11 +1730,15 @@ const title = "ASTA — Mail order coupon";
       }
 
 
+      /* ========================= */
       /* FOOTER */
+      /* ========================= */
 
-      .footer {
+    
+
+
+          .footer {
         width: 100%;
-        box-sizing: border-box;
         padding: 40px 40px 60px;
       }
 
@@ -1474,6 +1746,7 @@ const title = "ASTA — Mail order coupon";
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 30px;
         padding-top: 24px;
         border-top: 1px solid #151515;
         font-family: Arial, sans-serif;
@@ -1493,23 +1766,32 @@ const title = "ASTA — Mail order coupon";
       .footer-right a {
         color: #008ca3;
         text-decoration: none;
+        font-family: Arial, sans-serif;
         font-size: 10px;
         letter-spacing: 1.5px;
       }
 
 
+
+
+
+
+
+      /* ========================= */
       /* FLOATING BUTTONS */
+      /* ========================= */
 
       .floating-buttons {
         position: fixed;
-        bottom: 24px;
         right: 24px;
+        bottom: 24px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 12px;
         z-index: 9999;
       }
+
 
       .float-btn {
         display: flex;
@@ -1521,9 +1803,11 @@ const title = "ASTA — Mail order coupon";
         transition: transform 0.2s ease;
       }
 
+
       .float-btn:hover {
         transform: translateY(-2px);
       }
+
 
       .fb-btn {
         width: 44px;
@@ -1532,6 +1816,13 @@ const title = "ASTA — Mail order coupon";
         background: #181818;
         color: white;
       }
+
+
+      .fb-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
 
       .wa-btn {
         height: 44px;
@@ -1546,37 +1837,813 @@ const title = "ASTA — Mail order coupon";
       }
 
 
-      /* MOBILE */
-
-      @media (max-width: 800px) {
-
-        .coupon-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        .form-row {
-          grid-template-columns: 1fr;
-        }
-
-        .coupon-header {
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .coupon-header h1 {
-          font-size: 32px;
-        }
-
-        .back-link-wrap,
-        .coupon-page {
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-
+      .wa-btn svg {
+        width: 18px;
+        height: 18px;
       }
 
+
+      /* ================================================= */
+      /* TABLET */
+      /* ================================================= */
+
+/* ================================================= */
+/* TABLET */
+/* ================================================= */
+
+@media (max-width: 900px) {
+
+  .header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .info-bar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .back-link-wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .coupon-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* Stack checkout layout */
+  .coupon-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  /* Order summary below form */
+  .order-summary {
+    position: static;
+    border-top: 1px solid #bdbbb5;
+    padding-top: 30px;
+  }
+
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+  /* ------------------------- */
+  /* GLOBAL MOBILE SAFETY */
+  /* ------------------------- */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+
+
+  /* ------------------------- */
+  /* HEADER */
+  /* ------------------------- */
+
+  .header {
+    padding: 18px 16px 0;
+  }
+
+  .double-lines {
+    margin-bottom: 16px;
+  }
+
+  .header-content {
+    gap: 10px;
+    padding-bottom: 16px;
+  }
+
+  .logo-wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .logo-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .logo {
+    min-width: 0;
+    font-size: clamp(30px, 9vw, 38px);
+    letter-spacing: 2px;
+    overflow: hidden;
+  }
+
+  .right-side {
+    flex-shrink: 0;
+    gap: 7px;
+  }
+
+  .right-side a {
+    display: none;
+  }
+
+  .cart-header-btn {
+    padding: 9px 10px;
+    gap: 5px;
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+
+  .cart-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* ------------------------- */
+  /* INFO BAR */
+  /* ------------------------- */
+
+  .info-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 10px 16px;
+    font-size: 8px;
+    line-height: 1.5;
+    letter-spacing: 0.9px;
+  }
+
+  .info-bar span {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: 4px 5px 4px 0;
+  }
+
+
+  /* ------------------------- */
+  /* BACK LINK */
+  /* ------------------------- */
+
+  .back-link-wrap {
+    padding: 18px 16px 0;
+  }
+
+  .back-link {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+
+  /* ------------------------- */
+  /* MAIN PAGE */
+  /* ------------------------- */
+
+  .coupon-page {
+    width: 100%;
+    padding: 28px 16px 70px;
+  }
+
+
+  /* ------------------------- */
+  /* PAGE HEADER */
+  /* ------------------------- */
+
+  .coupon-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+  }
+
+  .coupon-header h1 {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.1;
+  }
+
+  .coupon-note {
+    font-size: 8px;
+    line-height: 1.5;
+    white-space: normal;
+    max-width: 100%;
+  }
+
+
+  /* ------------------------- */
+  /* CHECKOUT GRID */
+  /* ------------------------- */
+
+  .coupon-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+
+  /* ------------------------- */
+  /* FORM */
+  /* ------------------------- */
+
+  .coupon-form {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    padding: 11px 0;
+  }
+
+  .form-group label {
+    font-size: 9px;
+    letter-spacing: 1.1px;
+  }
+
+  .form-group textarea {
+    min-height: 90px;
+  }
+
+
+  /* ------------------------- */
+  /* PAYMENT */
+  /* ------------------------- */
+
+  .payment-options {
+    gap: 18px;
+  }
+
+  .payment-option {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .radio-custom {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+  .payment-option input:checked + .radio-custom::after {
+    width: 7px;
+    height: 7px;
+    top: 3.5px;
+    left: 3.5px;
+  }
+
+  .payment-option strong {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .payment-option small {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .payment-reference-note {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* ------------------------- */
+  /* ORDER BUTTON */
+  /* ------------------------- */
+
+  .place-order-btn {
+    width: 100%;
+    max-width: none;
+    padding: 16px 18px;
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 1.4px;
+  }
+
+  .form-footer-note {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .form-error {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* ------------------------- */
+  /* ORDER SUMMARY */
+  /* ------------------------- */
+
+  .order-summary {
+    width: 100%;
+    min-width: 0;
+    padding-top: 28px;
+  }
+
+  .your-order-title {
+    font-size: 9px;
+    margin-bottom: 20px;
+  }
+
+  .summary-item {
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .summary-img {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+  }
+
+  .summary-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .summary-name {
+    font-size: 14px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .summary-meta {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .summary-price {
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  .summary-totals {
+    margin-top: 10px;
+    padding-top: 15px;
+  }
+
+  .summary-row {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .total-row {
+    font-size: 16px;
+  }
+
+
+  /* ------------------------- */
+  /* FOOTER */
+  /* ------------------------- */
+
+  .footer {
+    padding: 30px 16px 90px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-top: 20px;
+  }
+
+  .footer-left {
+    font-size: 9px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .footer-right a {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+
+  /* ------------------------- */
+  /* FLOATING BUTTONS */
+  /* ------------------------- */
+
+  .floating-buttons {
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+
+  .fb-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fb-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .wa-btn {
+    height: 40px;
+    padding: 0 13px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .wa-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+
+/* ================================================= */
+/* VERY SMALL PHONES */
+/* ================================================= */
+
+@media (max-width: 380px) {
+
+  .header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .header-content {
+    gap: 7px;
+  }
+
+  .logo-wrapper {
+    gap: 7px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo {
+    font-size: 29px;
+    letter-spacing: 1.5px;
+  }
+
+  .cart-header-btn {
+    padding: 8px;
+    font-size: 8px;
+    gap: 4px;
+  }
+
+  .cart-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+
+  .info-bar {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+
+
+  .back-link-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+  .coupon-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .coupon-header h1 {
+    font-size: 27px;
+  }
+
+  .coupon-note {
+    font-size: 7px;
+  }
+
+
+  .payment-option strong {
+    font-size: 14px;
+  }
+
+  .payment-option small {
+    font-size: 11px;
+  }
+
+
+  .summary-img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .summary-name {
+    font-size: 13px;
+  }
+
+  .summary-price {
+    font-size: 12px;
+  }
+
+
+  .footer {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .footer-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+
+  .floating-buttons {
+    right: 9px;
+    bottom: 9px;
+  }
+
+  .fb-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wa-btn {
+    height: 38px;
+    padding: 0 11px;
+  }
+}
+
+
+/* ================================================= */
+/* TOUCH DEVICES */
+/* ================================================= */
+
+@media (hover: none) {
+
+  .place-order-btn:hover {
+    background: #008ca3;
+  }
+
+  .float-btn:hover {
+    transform: none;
+  }
+}
+
+
     </style>
+
+
+
+
+    <script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  const supabase = createClient(
+    'https://ryfufhtymvjeveppwjoj.supabase.co',
+    'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw'   // your key
+  );
+
+  async function loadOrderPageSettings() {
+    const { data, error } = await supabase
+      .from('site_settings')
+      .select('*');
+
+    if (error || !data) {
+      console.error('Failed to load order page settings', error);
+      return;
+    }
+
+const settings = {};
+
+data.forEach(row => {
+  settings[row.key] = row.value;
+});
+
+const getSetting = (camelCase) =>
+  settings[camelCase] ?? '';
+
+
+const whatsappNumber = String(
+  getSetting('whatsappNumber')
+).replace(/[^0-9]/g, '');
+
+const whatsappPhone = whatsappNumber || '8801577488708';
+
+
+
+const whatsappUrl = whatsappPhone
+  ? `https://api.whatsapp.com/send/?phone=%2B${whatsappPhone}`
+  : '';
+
+
+
+    // ===== PAGE TITLE =====
+    if (getSetting('orderPageTitle')) {
+      const titleEl = document.querySelector('.coupon-header h1');
+      if (titleEl) titleEl.textContent = getSetting('orderPageTitle');
+    }
+
+    // ===== PAGE NOTE =====
+    if (getSetting('orderPageNote')) {
+      const noteEl = document.querySelector('.coupon-note');
+      if (noteEl) noteEl.textContent = getSetting('orderPageNote');
+    }
+
+    // ===== BACK LINK =====
+    if (getSetting('orderBackLink')) {
+      const backLink = document.querySelector('.back-link');
+      if (backLink) backLink.textContent = getSetting('orderBackLink');
+    }
+
+    // ===== FOOTER NOTE under button =====
+    if (getSetting('orderFooterNote')) {
+      const footerNote = document.querySelector('.form-footer-note');
+      if (footerNote) footerNote.textContent = getSetting('orderFooterNote');
+    }
+
+    // ===== PAYMENT OPTIONS =====
+    const paymentOptions = document.querySelectorAll('.payment-option');
+
+    // COD (first)
+    if (paymentOptions[0]) {
+      if (getSetting('paymentCodTitle')) {
+        const strong = paymentOptions[0].querySelector('strong');
+        if (strong) strong.textContent = getSetting('paymentCodTitle');
+      }
+      if (getSetting('paymentCodDesc')) {
+        const small = paymentOptions[0].querySelector('small');
+        if (small) small.textContent = getSetting('paymentCodDesc');
+      }
+    }
+
+    // bKash (second)
+    if (paymentOptions[1]) {
+      if (getSetting('paymentBkashTitle')) {
+        const strong = paymentOptions[1].querySelector('strong');
+        if (strong) strong.textContent = getSetting('paymentBkashTitle');
+      }
+      if (getSetting('paymentBkashDesc')) {
+        const small = paymentOptions[1].querySelector('small');
+        if (small) small.textContent = getSetting('paymentBkashDesc');
+      }
+    }
+
+    // Nagad (third)
+  // Nagad (third)
+if (paymentOptions[2]) {
+  if (getSetting('paymentNagadTitle')) {
+    const strong = paymentOptions[2].querySelector('strong');
+    if (strong) {
+      strong.textContent = getSetting('paymentNagadTitle');
+    }
+  }
+
+  if (getSetting('paymentNagadDesc')) {
+    const small = paymentOptions[2].querySelector('small');
+    if (small) {
+      small.textContent = getSetting('paymentNagadDesc');
+    }
+  }
+}
+
+// Bank (fourth)
+if (paymentOptions[3]) {
+  if (getSetting('paymentBankTitle')) {
+    const strong = paymentOptions[3].querySelector('strong');
+    if (strong) {
+      strong.textContent = getSetting('paymentBankTitle');
+    }
+  }
+
+  if (getSetting('paymentBankDesc')) {
+    const small = paymentOptions[3].querySelector('small');
+    if (small) {
+      small.textContent = getSetting('paymentBankDesc');
+    }
+  }
+}
+
+   
+
+    // ===== INFO BAR (shared with homepage) =====
+    const infoBarSpans = document.querySelectorAll('.info-bar span');
+    if (infoBarSpans.length >= 4) {
+      if (getSetting('editionLabel')) infoBarSpans[0].textContent = getSetting('editionLabel');
+      if (getSetting('infoBar2'))    infoBarSpans[1].textContent = getSetting('infoBar2');
+      if (getSetting('infoBar3'))    infoBarSpans[2].textContent = getSetting('infoBar3');
+      if (getSetting('infoBar4'))    infoBarSpans[3].textContent = getSetting('infoBar4');
+    }
+
+    // ===== LOGO =====
+    if (getSetting('logoUrl')) {
+      const logoImg = document.querySelector('.logo-img');
+      if (logoImg) logoImg.src = getSetting('logoUrl');
+    }
+  
+
+
+    // ===== WHATSAPP LINKS =====
+if (whatsappUrl) {
+  const footerWhatsapp = document.getElementById('footerWhatsappLink');
+  if (footerWhatsapp) {
+    footerWhatsapp.href = whatsappUrl;
+    footerWhatsapp.textContent = `+${whatsappPhone.slice(0, 2)} ${whatsappPhone.slice(2, 6)} ${whatsappPhone.slice(6)}`;
+  }
+
+  const floatingWhatsapp = document.getElementById('floatingWhatsapp');
+  if (floatingWhatsapp) {
+    floatingWhatsapp.href = whatsappUrl;
+  }
+}
+
+
+
+    const floatingFacebookEnabled = settings.floatingFacebookEnabled;
+const floatingWhatsappEnabled = settings.floatingWhatsappEnabled;
+
+const floatingFb = document.getElementById('floatingFacebook');
+const floatingWa = document.getElementById('floatingWhatsapp');
+
+if (
+  floatingFb &&
+  (
+    floatingFacebookEnabled === false ||
+    floatingFacebookEnabled === 'false' ||
+    floatingFacebookEnabled === '0'
+  )
+) {
+  floatingFb.style.display = 'none';
+}
+
+if (
+  floatingWa &&
+  (
+    floatingWhatsappEnabled === false ||
+    floatingWhatsappEnabled === 'false' ||
+    floatingWhatsappEnabled === '0'
+  )
+) {
+  floatingWa.style.display = 'none';
+}
+
+
+
+  }
+
+
+
+  loadOrderPageSettings();
+
+
+
+
+
+
+  
+</script>
+
+
+
 
   </body>
 </html>

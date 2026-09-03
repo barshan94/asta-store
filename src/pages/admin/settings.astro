@@ -1,0 +1,1346 @@
+---
+const title = "Site Settings — ASTA Admin";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="admin-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">
+          ASTA Admin
+        </div>
+        <nav>
+          <a href="/admin">Orders</a>
+          <a href="/admin/products">Products</a>
+          <a href="/admin/settings" class="active">Settings</a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">
+          Logout
+        </button>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main-content">
+        <header class="top-bar">
+          <div>
+            <h1>Site Settings</h1>
+            <p>
+              Control the content and account settings of your ASTA website from here.
+            </p>
+          </div>
+        </header>
+
+        <!-- ACCOUNT & PASSWORD SECTION -->
+        <section class="setting-card">
+          <div class="section-heading">
+            <h2>Account Details</h2>
+            <p>Your current login session details.</p>
+          </div>
+          <div class="form-group">
+            <label for="currentEmail">Signed in as</label>
+            <input type="email" id="currentEmail" disabled />
+          </div>
+        </section>
+
+        <section class="setting-card">
+          <div class="section-heading">
+            <h2>Change Password</h2>
+            <p>Choose a new password for your admin account.</p>
+          </div>
+          <form id="changePasswordForm">
+            <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <input type="password" id="newPassword" required minlength="6" placeholder="••••••••" />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm New Password</label>
+              <input type="password" id="confirmPassword" required minlength="6" placeholder="••••••••" />
+            </div>
+            <p id="pwError" class="message error" style="display:none;"></p>
+            <p id="pwSuccess" class="message success" style="display:none;">Password updated successfully.</p>
+            <div style="margin-top: 16px;">
+              <button type="submit" id="pwBtn" class="btn-primary">Update Password</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- SITE CONTENT FORM -->
+        <form id="settingsForm" class="settings-form">
+
+          <!-- GENERAL / BRAND -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>General & Brand</h2>
+              <p>Basic information used throughout the website.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="siteName">Site Name</label>
+              <input type="text" id="siteName" placeholder="ASTA" />
+            </div>
+
+            <div class="form-group">
+              <label for="pageTitle">Browser Page Title</label>
+              <input type="text" id="pageTitle" placeholder="ASTA — Handmade Leather" />
+            </div>
+
+            <div class="form-group">
+              <label for="facebookUrl">Facebook URL</label>
+              <input type="url" id="facebookUrl" placeholder="https://facebook.com/..." />
+            </div>
+
+            <div class="form-group">
+              <label for="whatsappNumber">WhatsApp Number</label>
+              <input type="text" id="whatsappNumber" placeholder="8801XXXXXXXXX" />
+              <p class="hint">Use international format without + or spaces. Example: 8801712345678</p>
+            </div>
+
+            <div class="form-group">
+              <label for="whatsappUrl">WhatsApp URL</label>
+              <input type="url" id="whatsappUrl" placeholder="https://wa.me/8801XXXXXXXXX" />
+            </div>
+          </section>
+
+          <!-- LOGO -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Logo</h2>
+              <p>Upload the logo displayed on the website.</p>
+            </div>
+
+            <div class="image-row">
+              <img id="logoPreview" src="" alt="Logo preview" class="preview-img" />
+              <div class="upload-area">
+                <input type="file" id="logoFile" accept="image/png,image/jpeg,image/webp" />
+                <p class="hint">Recommended: square PNG, JPG or WebP.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- INFO BAR -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Info Bar</h2>
+              <p>The small information messages shown across the homepage.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="editionLabel">Edition Label</label>
+              <input type="text" id="editionLabel" placeholder="EDITION NO. 04" />
+            </div>
+
+            <div class="form-group">
+              <label for="infoBar2">Info Bar 2</label>
+              <input type="text" id="infoBar2" placeholder="HANDMADE LEATHER DHAKA" />
+            </div>
+
+            <div class="form-group">
+              <label for="infoBar3">Info Bar 3</label>
+              <input type="text" id="infoBar3" placeholder="CASH ON DELIVERY" />
+            </div>
+
+            <div class="form-group">
+              <label for="infoBar4">Info Bar 4</label>
+              <input type="text" id="infoBar4" placeholder="EXCHANGE WITHIN THREE DAYS" />
+            </div>
+          </section>
+
+          <!-- ORDER PAGE SETTINGS -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Order Page (Mail order coupon)</h2>
+              <p>Configure text content and payment descriptions for the order flow.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="orderPageTitle">Page Title</label>
+              <input type="text" id="orderPageTitle" placeholder="Mail order coupon" />
+            </div>
+
+            <div class="form-group">
+              <label for="orderPageNote">Page Note</label>
+              <input type="text" id="orderPageNote" placeholder="FILL IN INK · WE CALL TO CONFIRM" />
+            </div>
+
+            <div class="form-group">
+              <label for="orderBackLink">Back Link Text</label>
+              <input type="text" id="orderBackLink" placeholder="← BACK TO THE EDITION" />
+            </div>
+
+            <div class="form-group">
+              <label for="orderFooterNote">Footer Note under button</label>
+              <input type="text" id="orderFooterNote" placeholder="Nothing is charged online. We ring you within a few hours." />
+            </div>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
+
+            <h3 style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #555;">Payment Options</h3>
+
+            <div class="form-group">
+              <label for="paymentCodTitle">Cash on delivery - Title</label>
+              <input type="text" id="paymentCodTitle" />
+            </div>
+            <div class="form-group">
+              <label for="paymentCodDesc">Cash on delivery - Description</label>
+              <input type="text" id="paymentCodDesc" />
+            </div>
+
+            <div class="form-group">
+              <label for="paymentBkashTitle">BKash Title</label>
+              <input type="text" id="paymentBkashTitle" />
+            </div>
+            <div class="form-group">
+              <label for="paymentBkashDesc">BKash Description</label>
+              <input type="text" id="paymentBkashDesc" />
+            </div>
+
+            <div class="form-group">
+              <label for="paymentNagadTitle">Nagad Title</label>
+              <input type="text" id="paymentNagadTitle" />
+            </div>
+            <div class="form-group">
+              <label for="paymentNagadDesc">Nagad Description</label>
+              <input type="text" id="paymentNagadDesc" />
+            </div>
+
+            <div class="form-group">
+              <label for="paymentBankTitle">Bank transfer Title</label>
+              <input type="text" id="paymentBankTitle" />
+            </div>
+            <div class="form-group">
+              <label for="paymentBankDesc">Bank transfer Description</label>
+              <input type="text" id="paymentBankDesc" />
+            </div>
+          </section>
+
+          <!-- HERO -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Hero Section</h2>
+              <p>The main banner visitors see when they enter your website.</p>
+            </div>
+
+            <div class="image-row hero-upload">
+              <img id="heroPreview" src="" alt="Hero preview" class="preview-img hero-preview" />
+              <div class="upload-area">
+                <input type="file" id="heroFile" accept="image/png,image/jpeg,image/webp" />
+                <p class="hint">Main hero/banner image.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="heroTitle">Hero Title</label>
+              <textarea id="heroTitle" rows="4" placeholder="Crafted to stand the test of time"></textarea>
+              <p class="hint">You can use line breaks to control the appearance of the heading.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="heroDescription">Hero Description</label>
+              <textarea id="heroDescription" rows="5" placeholder="Describe your collection..."></textarea>
+            </div>
+
+            <div class="two-column">
+              <div class="form-group">
+                <label for="heroButton1Text">Button 1 Text</label>
+                <input type="text" id="heroButton1Text" placeholder="SEE THE EDITION" />
+              </div>
+
+              <div class="form-group">
+                <label for="heroButton1Link">Button 1 Link</label>
+                <input type="text" id="heroButton1Link" placeholder="#edition" />
+              </div>
+            </div>
+
+            <div class="two-column">
+              <div class="form-group">
+                <label for="heroButton2Text">Button 2 Text</label>
+                <input type="text" id="heroButton2Text" placeholder="ASK ON WHATSAPP" />
+              </div>
+
+              <div class="form-group">
+                <label for="heroButton2Link">Button 2 Link</label>
+                <input type="text" id="heroButton2Link" placeholder="https://wa.me/..." />
+              </div>
+            </div>
+          </section>
+
+          <!-- STATISTICS -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Statistics</h2>
+              <p>The four information blocks displayed below the hero section.</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-box">
+                <span>Stat 01</span>
+                <div class="form-group">
+                  <label for="stat1Value">Value</label>
+                  <input type="text" id="stat1Value" placeholder="04" />
+                </div>
+                <div class="form-group">
+                  <label for="stat1Label">Label</label>
+                  <input type="text" id="stat1Label" placeholder="Bags in this edition" />
+                </div>
+              </div>
+
+              <div class="stat-box">
+                <span>Stat 02</span>
+                <div class="form-group">
+                  <label for="stat2Value">Value</label>
+                  <input type="text" id="stat2Value" placeholder="0" />
+                </div>
+                <div class="form-group">
+                  <label for="stat2Label">Label</label>
+                  <input type="text" id="stat2Label" placeholder="Card gateways used" />
+                </div>
+              </div>
+
+              <div class="stat-box">
+                <span>Stat 03</span>
+                <div class="form-group">
+                  <label for="stat3Value">Value</label>
+                  <input type="text" id="stat3Value" placeholder="৳80" />
+                </div>
+                <div class="form-group">
+                  <label for="stat3Label">Label</label>
+                  <input type="text" id="stat3Label" placeholder="Delivery inside Dhaka" />
+                </div>
+              </div>
+
+              <div class="stat-box">
+                <span>Stat 04</span>
+                <div class="form-group">
+                  <label for="stat4Value">Value</label>
+                  <input type="text" id="stat4Value" placeholder="3" />
+                </div>
+                <div class="form-group">
+                  <label for="stat4Label">Label</label>
+                  <input type="text" id="stat4Label" placeholder="Exchange window, days" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- EDITION -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Edition Section</h2>
+              <p>Heading displayed above the products.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="editionHeading">Edition Heading</label>
+              <input type="text" id="editionHeading" placeholder="The edition" />
+            </div>
+
+            <div class="form-group">
+              <label for="editionSubheading">Edition Subheading</label>
+              <input type="text" id="editionSubheading" placeholder="FOUR BAGS IN STOCK TODAY" />
+            </div>
+
+            <p class="info-note">
+              Products themselves are managed separately from the <strong>Products</strong> page.
+            </p>
+          </section>
+
+          <!-- TESTIMONIAL -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Customer Testimonial</h2>
+              <p>Customer review displayed on the homepage.</p>
+            </div>
+
+            <div class="image-row">
+              <img id="testimonialPreview" src="" alt="Testimonial preview" class="preview-img testimonial-preview" />
+              <div class="upload-area">
+                <input type="file" id="testimonialFile" accept="image/png,image/jpeg,image/webp" />
+                <p class="hint">Customer/testimonial image.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="testimonialQuote">Customer Quote</label>
+              <textarea id="testimonialQuote" rows="5" placeholder="Write the customer's review..."></textarea>
+            </div>
+
+            <div class="two-column">
+              <div class="form-group">
+                <label for="testimonialAuthor">Customer Name</label>
+                <input type="text" id="testimonialAuthor" placeholder="Nusrat J." />
+              </div>
+
+              <div class="form-group">
+                <label for="testimonialLocation">Location</label>
+                <input type="text" id="testimonialLocation" placeholder="Dhaka" />
+              </div>
+            </div>
+          </section>
+
+          <!-- ORDERING -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Ordering Section</h2>
+              <p>Explain to customers how ordering works.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="orderingTitle">Section Title</label>
+              <input type="text" id="orderingTitle" placeholder="How to order" />
+            </div>
+
+            <div class="form-group">
+              <label for="orderingDescription">Description</label>
+              <textarea id="orderingDescription" rows="4" placeholder="Explain your ordering process"></textarea>
+            </div>
+
+            <!-- STEP 01 -->
+            <div class="step-card">
+              <h3>Step 01</h3>
+              <div class="form-group">
+                <label for="orderStep1Description">Description</label>
+                <textarea id="orderStep1Description" rows="3" placeholder="Add the bag and the colour you want to the slip..."></textarea>
+              </div>
+            </div>
+
+            <!-- STEP 02 -->
+            <div class="step-card">
+              <h3>Step 02</h3>
+              <div class="form-group">
+                <label for="orderStep2Description">Description</label>
+                <textarea id="orderStep2Description" rows="3" placeholder="Fill the coupon — name, phone, address"></textarea>
+              </div>
+            </div>
+
+            <!-- STEP 03 -->
+            <div class="step-card">
+              <h3>Step 03</h3>
+              <div class="form-group">
+                <label for="orderStep3Description">Description</label>
+                <textarea id="orderStep3Description" rows="3" placeholder="We confirm on WhatsApp..."></textarea>
+              </div>
+            </div>
+
+            <!-- DELIVERY FEES -->
+            <div class="two-column">
+              <div class="form-group">
+                <label for="deliveryInsideDhaka">Delivery Fee — Inside Dhaka</label>
+                <input type="text" id="deliveryInsideDhaka" placeholder="80" />
+              </div>
+
+              <div class="form-group">
+                <label for="deliveryOutsideDhaka">Delivery Fee — Outside Dhaka</label>
+                <input type="text" id="deliveryOutsideDhaka" placeholder="130" />
+              </div>
+            </div>
+          </section>
+
+          <!-- FOOTER -->
+          <section class="setting-card">
+            <div class="section-heading">
+              <h2>Footer & Contact</h2>
+              <p>Information and contact options displayed at the bottom of the site.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="footerText">Footer Text</label>
+              <textarea id="footerText" rows="4" placeholder="ASTA — handmade leather"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="footerFacebook">Facebook URL</label>
+              <input type="url" id="footerFacebook" placeholder="https://facebook.com/..." />
+            </div>
+
+            <div class="form-group">
+              <label for="footerWhatsapp">WhatsApp URL</label>
+              <input type="url" id="footerWhatsapp" placeholder="https://wa.me/..." />
+            </div>
+
+            <!-- FLOATING WHATSAPP -->
+<!-- FLOATING WHATSAPP -->
+<div class="toggle-row">
+  <div>
+    <strong>Floating WhatsApp Button</strong>
+    <p>Show or hide the floating WhatsApp button on the website.</p>
+  </div>
+
+  <label class="switch">
+    <input type="checkbox" id="floatingWhatsappEnabled" checked />
+    <span class="slider"></span>
+  </label>
+</div>
+
+<!-- FLOATING FACEBOOK -->
+<div class="toggle-row">
+  <div>
+    <strong>Floating Facebook Button</strong>
+    <p>Show or hide the floating Facebook button on the website.</p>
+  </div>
+
+  <label class="switch">
+    <input type="checkbox" id="floatingFacebookEnabled" checked />
+    <span class="slider"></span>
+  </label>
+</div>
+          </section>
+
+          <!-- MESSAGE -->
+          <p id="formMessage" class="message" style="display:none;"></p>
+
+          <!-- SAVE -->
+          <div class="save-area">
+            <button type="submit" id="saveBtn" class="btn-primary">
+              Save All Settings
+            </button>
+          </div>
+
+        </form>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabase = createClient(
+  'https://ryfufhtymvjeveppwjoj.supabase.co',
+  'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw',
+  { auth: { storageKey: 'asta-admin-auth' } }
+);
+
+  const get = (id) => document.getElementById(id);
+
+  // =========================================================
+  // AUTH + LOAD SETTINGS
+  // =========================================================
+
+  async function checkAuthAndLoad() {
+    document.body.style.display = 'none';
+
+    const {
+      data: { session },
+      error
+    } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error('Auth error:', error);
+      window.location.replace('/admin/login');
+      return;
+    }
+
+    if (!session) {
+      window.location.replace('/admin/login');
+      return;
+    }
+
+    document.body.style.display = 'block';
+
+    // Show logged-in email
+    if (get('currentEmail')) {
+      get('currentEmail').value = session.user.email || '';
+    }
+
+    // Load settings
+    const { data, error: settingsError } = await supabase
+      .from('site_settings')
+      .select('*');
+
+    if (settingsError) {
+      console.error('Settings error:', settingsError);
+
+      showMessage(
+        'Could not load site settings: ' + settingsError.message,
+        'error'
+      );
+
+      return;
+    }
+
+    if (data) {
+      data.forEach((row) => {
+        const input = get(row.key);
+
+        if (!input) return;
+
+        // Checkbox
+        if (input.type === 'checkbox') {
+          input.checked =
+            row.value === true ||
+            row.value === 'true' ||
+            row.value === '1';
+        }
+
+        // Everything else
+        else {
+          input.value = row.value ?? '';
+        }
+      });
+
+      // Load image previews from saved URLs
+// Load saved image URLs into previews
+data.forEach((row) => {
+
+  if (row.key === 'logoUrl' && row.value) {
+    get('logoPreview').src = row.value;
+  }
+
+  if (row.key === 'heroUrl' && row.value) {
+    get('heroPreview').src = row.value;
+  }
+
+  if (row.key === 'testimonialImageUrl' && row.value) {
+    get('testimonialPreview').src = row.value;
+  }
+
+});
+    }
+  }
+
+
+  // =========================================================
+  // IMAGE PREVIEW
+  // =========================================================
+
+
+
+
+  // =========================================================
+  // AUTH STATE LISTENER
+  // =========================================================
+
+  supabase.auth.onAuthStateChange((event) => {
+    console.log('Auth event:', event);
+
+    if (event === 'SIGNED_OUT') {
+      window.location.replace('/admin/login');
+    }
+  });
+
+
+  // =========================================================
+  // LOGOUT
+  // =========================================================
+
+  get('logoutBtn')?.addEventListener('click', async () => {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.error('Logout error:', error);
+      return;
+    }
+
+    window.location.replace('/admin/login');
+  });
+
+
+  // =========================================================
+  // CHANGE PASSWORD
+  // =========================================================
+
+  get('changePasswordForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const newPassword = get('newPassword').value;
+    const confirmPassword = get('confirmPassword').value;
+
+    const pwError = get('pwError');
+    const pwSuccess = get('pwSuccess');
+    const pwBtn = get('pwBtn');
+
+    pwError.style.display = 'none';
+    pwSuccess.style.display = 'none';
+
+    if (newPassword !== confirmPassword) {
+      pwError.textContent = 'Passwords do not match.';
+      pwError.style.display = 'block';
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      pwError.textContent =
+        'Password must be at least 6 characters.';
+      pwError.style.display = 'block';
+      return;
+    }
+
+    pwBtn.disabled = true;
+    pwBtn.textContent = 'Updating...';
+
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword
+      });
+
+      if (error) {
+        console.error('Password update error:', error);
+
+        pwError.textContent = error.message;
+        pwError.style.display = 'block';
+        return;
+      }
+
+      pwSuccess.textContent =
+        'Password updated successfully.';
+      pwSuccess.style.display = 'block';
+
+      get('newPassword').value = '';
+      get('confirmPassword').value = '';
+
+    } catch (err) {
+      console.error('Unexpected password update error:', err);
+
+      pwError.textContent =
+        'Something went wrong. Please try again.';
+      pwError.style.display = 'block';
+
+    } finally {
+      pwBtn.disabled = false;
+      pwBtn.textContent = 'Update Password';
+    }
+  });
+
+
+  // =========================================================
+  // IMAGE PREVIEW WHEN USER SELECTS A FILE
+  // =========================================================
+
+  function setupFilePreview(fileInputId, previewId) {
+    const fileInput = get(fileInputId);
+    const preview = get(previewId);
+
+    if (!fileInput || !preview) return;
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        fileInput.value = '';
+        return;
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+
+      preview.src = objectUrl;
+      preview.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+      };
+    });
+  }
+
+  setupFilePreview('logoFile', 'logoPreview');
+  setupFilePreview('heroFile', 'heroPreview');
+  setupFilePreview('testimonialFile', 'testimonialPreview');
+
+
+  // =========================================================
+  // UPLOAD IMAGE TO SUPABASE STORAGE
+  // =========================================================
+
+  async function uploadImage(file, folder) {
+    if (!file) {
+      return null;
+    }
+
+    // Maximum 5 MB
+    const maxSize = 5 * 1024 * 1024;
+
+    if (file.size > maxSize) {
+      throw new Error(
+        `${folder} image is too large. Maximum size is 5 MB.`
+      );
+    }
+
+    if (!file.type.startsWith('image/')) {
+      throw new Error(
+        `${folder} must be an image file.`
+      );
+    }
+
+    const fileExtension =
+      file.name.split('.').pop()?.toLowerCase() || 'jpg';
+
+    const fileName =
+      `${folder}-${Date.now()}-${Math.random()
+        .toString(36)
+        .substring(2, 8)}.${fileExtension}`;
+
+    const filePath = `${folder}/${fileName}`;
+
+    console.log('Uploading:', filePath);
+
+    const { error: uploadError } = await supabase.storage
+      .from('site')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (uploadError) {
+      console.error('Upload error:', uploadError);
+      throw new Error(
+        `Could not upload ${folder}: ${uploadError.message}`
+      );
+    }
+
+    const {
+      data: { publicUrl }
+    } = supabase.storage
+      .from('site')
+      .getPublicUrl(filePath);
+
+    console.log('Uploaded URL:', publicUrl);
+
+    return publicUrl;
+  }
+
+
+  // =========================================================
+  // SAVE ONE SETTING
+  // =========================================================
+
+  async function saveSetting(key, value) {
+    const { error } = await supabase
+      .from('site_settings')
+      .upsert(
+        {
+          key: key,
+          value: String(value ?? '')
+        },
+        {
+          onConflict: 'key'
+        }
+      );
+
+    if (error) {
+      throw new Error(
+        `Failed to save "${key}": ${error.message}`
+      );
+    }
+  }
+
+
+  // =========================================================
+  // GET ALL FORM SETTINGS
+  // =========================================================
+
+  function collectSettings() {
+    const form = get('settingsForm');
+
+    if (!form) return {};
+
+    const settings = {};
+
+    const elements = form.querySelectorAll(
+      'input[id], textarea[id], select[id]'
+    );
+
+    elements.forEach((input) => {
+
+      // Skip file inputs
+      if (input.type === 'file') return;
+
+      // Checkbox
+      if (input.type === 'checkbox') {
+        settings[input.id] = input.checked ? 'true' : 'false';
+      }
+
+      // Text / textarea / URL etc.
+      else {
+        settings[input.id] = input.value;
+      }
+    });
+
+    return settings;
+  }
+
+
+  // =========================================================
+  // MESSAGE
+  // =========================================================
+
+  function showMessage(message, type) {
+    const formMessage = get('formMessage');
+
+    if (!formMessage) return;
+
+    formMessage.textContent = message;
+
+    formMessage.className = 'message ' + type;
+
+    formMessage.style.display = 'block';
+
+    // Automatically hide after 5 seconds
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }
+
+
+  // =========================================================
+  // SAVE ALL SETTINGS
+  // =========================================================
+
+  get('settingsForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const saveBtn = get('saveBtn');
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving...';
+
+    get('formMessage').style.display = 'none';
+
+    try {
+
+      // -----------------------------------------------------
+      // 1. Collect normal settings
+      // -----------------------------------------------------
+
+      const settings = collectSettings();
+
+      console.log('Settings to save:', settings);
+
+
+      // -----------------------------------------------------
+      // 2. Upload LOGO if selected
+      // -----------------------------------------------------
+
+      const logoFile = get('logoFile')?.files?.[0];
+
+      if (logoFile) {
+        saveBtn.textContent = 'Uploading logo...';
+
+        const logoUrl = await uploadImage(
+          logoFile,
+          'logo'
+        );
+
+        settings.logoUrl = logoUrl;
+      }
+
+
+      // -----------------------------------------------------
+      // 3. Upload HERO if selected
+      // -----------------------------------------------------
+
+      const heroFile = get('heroFile')?.files?.[0];
+
+      if (heroFile) {
+        saveBtn.textContent = 'Uploading hero...';
+
+        const heroUrl = await uploadImage(
+          heroFile,
+          'hero'
+        );
+
+        settings.heroUrl = heroUrl;
+      }
+
+
+      // -----------------------------------------------------
+      // 4. Upload TESTIMONIAL if selected
+      // -----------------------------------------------------
+
+      const testimonialFile =
+        get('testimonialFile')?.files?.[0];
+
+      if (testimonialFile) {
+        saveBtn.textContent =
+          'Uploading testimonial...';
+
+        const testimonialUrl = await uploadImage(
+          testimonialFile,
+          'testimonial'
+        );
+
+        settings.testimonialImageUrl =
+          testimonialUrl;
+      }
+
+
+      // -----------------------------------------------------
+      // 5. Save EVERYTHING to site_settings
+      // -----------------------------------------------------
+
+      saveBtn.textContent = 'Saving settings...';
+
+      const entries = Object.entries(settings);
+
+      for (const [key, value] of entries) {
+
+        await saveSetting(key, value);
+
+      }
+
+
+      // -----------------------------------------------------
+      // 6. Success
+      // -----------------------------------------------------
+
+      showMessage(
+        'All settings saved successfully.',
+        'success'
+      );
+
+      saveBtn.textContent = 'Saved ✓';
+
+      // Clear selected files
+      if (get('logoFile')) {
+        get('logoFile').value = '';
+      }
+
+      if (get('heroFile')) {
+        get('heroFile').value = '';
+      }
+
+      if (get('testimonialFile')) {
+        get('testimonialFile').value = '';
+      }
+
+      // Return button to normal after 2 seconds
+      setTimeout(() => {
+        saveBtn.textContent = 'Save All Settings';
+        saveBtn.disabled = false;
+      }, 2000);
+
+
+    } catch (error) {
+
+      console.error('SAVE ERROR:', error);
+
+      showMessage(
+        error.message || 'Failed to save settings.',
+        'error'
+      );
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Save All Settings';
+    }
+  });
+
+
+  // =========================================================
+  // START
+  // =========================================================
+
+  checkAuthAndLoad();
+
+</script>
+
+    <!-- CSS -->
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: Arial, sans-serif; background: #f4f3ef; color: #151515; line-height: 1.5; }
+      .admin-layout { display: flex; min-height: 100vh; }
+      
+      /* SIDEBAR STYLES */
+      .sidebar {
+        width: 220px;
+        min-height: 100vh;
+        background: #151515;
+        color: white;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+      }
+      .logo { font-family: Georgia, serif; font-size: 22px; margin-bottom: 40px; }
+      nav a { display: block; color: #aaa; text-decoration: none; padding: 10px 0; font-size: 14px; transition: color 0.2s; }
+      nav a.active, nav a:hover { color: white; }
+      .logout-btn { margin-top: auto; background: transparent; border: 1px solid #444; color: #ccc; padding: 10px; cursor: pointer; font-size: 13px; transition: 0.2s; border-radius: 4px; }
+      .logout-btn:hover { border-color: #777; color: white; }
+      
+      /* MAIN LAYOUT STYLES */
+      .main-content { flex: 1; padding: 35px 45px 60px; max-width: 1100px; }
+      .top-bar { margin-bottom: 30px; }
+      .top-bar h1 { font-family: Georgia, serif; font-size: 30px; font-weight: 500; margin-bottom: 8px; }
+      .top-bar p { color: #777; font-size: 14px; }
+      .setting-card { background: white; padding: 26px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9e7e1; }
+      .section-heading { margin-bottom: 22px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+      .section-heading h2 { font-family: Georgia, serif; font-size: 20px; font-weight: 500; margin-bottom: 5px; }
+      .section-heading p { font-size: 12px; color: #888; line-height: 1.5; }
+      
+      /* FORM INPUT STYLES */
+      .form-group { margin-bottom: 17px; }
+      .form-group:last-child { margin-bottom: 0; }
+      .form-group label { display: block; font-size: 12px; color: #555; margin-bottom: 7px; font-weight: 600; }
+      .form-group input, .form-group textarea { width: 100%; padding: 11px 12px; border: 1px solid #dcdcdc; border-radius: 4px; font-size: 14px; font-family: inherit; background: white; color: #151515; outline: none; transition: border-color 0.2s; }
+      .form-group input[disabled] { background: #f5f5f5; color: #888; }
+      .form-group textarea { resize: vertical; line-height: 1.5; }
+      .form-group input:focus, .form-group textarea:focus { border-color: #777; }
+      .hint { font-size: 11px; color: #999; margin-top: 6px; line-height: 1.4; }
+      .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 17px; }
+      .image-row { display: flex; gap: 20px; align-items: center; margin-bottom: 22px; }
+      .preview-img { width: 90px; height: 90px; object-fit: cover; border-radius: 6px; background: #eee; border: 1px solid #ddd; flex-shrink: 0; }
+      .hero-preview { width: 220px; height: 130px; }
+      .testimonial-preview { width: 120px; height: 120px; }
+      .upload-area { flex: 1; }
+      .upload-area input[type="file"] { font-size: 13px; max-width: 100%; }
+      .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .stat-box { background: #f7f6f2; border: 1px solid #e8e6df; border-radius: 6px; padding: 18px; }
+      .stat-box > span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 12px; }
+      .step-card { background: #f7f6f2; border: 1px solid #e8e6df; border-radius: 6px; padding: 18px; margin-bottom: 16px; }
+      .step-card h3 { font-family: Georgia, serif; font-size: 16px; font-weight: 500; margin-bottom: 12px; }
+      .info-note { font-size: 12px; color: #777; margin-top: 15px; }
+      
+      /* TOGGLE SWITCH */
+      .toggle-row { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; }
+      .toggle-row strong { font-size: 14px; display: block; margin-bottom: 4px; }
+      .toggle-row p { font-size: 12px; color: #888; }
+      .switch { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider { position: absolute; cursor: pointer; inset: 0; background-color: #ccc; transition: .3s; border-radius: 24px; }
+      .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+      input:checked + .slider { background-color: #008ca3; }
+      input:checked + .slider:before { transform: translateX(20px); }
+      
+      /* BUTTONS & MESSAGES */
+      .save-area { margin-top: 25px; }
+      .btn-primary { background: #151515; color: white; border: none; padding: 14px 28px; border-radius: 4px; font-size: 14px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+      .btn-primary:hover { background: #008ca3; }
+      .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+      .message { padding: 14px; border-radius: 4px; font-size: 13px; margin-top: 20px; }
+      .message.success { background: #e6f4ea; color: #137333; border: 1px solid #ceead6; }
+      .message.error { background: #fce8e6; color: #c5221f; border: 1px solid #fad2cf; }
+
+      /* MEDIA QUERIES FOR RESPONSIVENESS */
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 820px) {
+
+  .admin-layout {
+    display: block;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    position: relative;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+
+  nav a {
+    flex: 1;
+    text-align: center;
+    padding: 9px 6px;
+    font-size: 13px;
+    background: #222;
+    border-radius: 4px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+
+  /* MAIN CONTENT */
+  .main-content {
+    width: 100%;
+    max-width: none;
+    padding: 24px 16px 50px;
+  }
+
+  .top-bar {
+    margin-bottom: 20px;
+  }
+
+  .top-bar h1 {
+    font-size: 26px;
+  }
+
+  .top-bar p {
+    font-size: 13px;
+  }
+
+  /* CARDS */
+  .setting-card {
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    border-radius: 7px;
+  }
+
+  .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .section-heading h2 {
+    font-size: 19px;
+  }
+
+  /* TWO COLUMN FIELDS → ONE COLUMN */
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .two-column .form-group {
+    margin-bottom: 17px;
+  }
+
+  /* STATISTICS → ONE COLUMN */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-box {
+    padding: 16px;
+  }
+
+  /* IMAGES / UPLOADS */
+  .image-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .preview-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-preview {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .testimonial-preview {
+    width: 110px;
+    height: 110px;
+  }
+
+  .upload-area {
+    width: 100%;
+  }
+
+  .upload-area input[type="file"] {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  /* ORDERING STEPS */
+  .step-card {
+    padding: 15px;
+    margin-bottom: 12px;
+  }
+
+  /* TOGGLE */
+  .toggle-row {
+    gap: 15px;
+    align-items: center;
+  }
+
+  .toggle-row > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .toggle-row strong {
+    font-size: 13px;
+  }
+
+  .toggle-row p {
+    font-size: 11px;
+  }
+
+  /* SAVE BUTTON */
+  .save-area {
+    margin-top: 20px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}
+
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 480px) {
+
+  .main-content {
+    padding: 18px 12px 40px;
+  }
+
+  .setting-card {
+    padding: 17px 13px;
+  }
+
+  .top-bar h1 {
+    font-size: 23px;
+  }
+
+  .top-bar p {
+    font-size: 12px;
+  }
+
+  nav {
+    gap: 4px;
+  }
+
+  nav a {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 14px;
+  }
+
+  .two-column {
+    display: block;
+  }
+
+  .hero-preview {
+    max-width: 100%;
+  }
+}
+    </style>
+  </body>
+</html>

@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products — ASTA Admin</title>
+    <style>
+      /* --- RESET & BASE --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        background: #f6f5f1;
+        color: #1e1e1e;
+        line-height: 1.5;
+      }
+
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      /* --- LAYOUT --- */
+      .admin-layout {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* --- SIDEBAR --- */
+      .sidebar {
+        width: 230px;
+        background: #141414;
+        color: #fff;
+        padding: 32px 20px;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      .logo {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 24px;
+        letter-spacing: -0.3px;
+        margin-bottom: 40px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #2a2a2a;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
+      }
+
+      nav a {
+        color: #a0a0a0;
+        text-decoration: none;
+        padding: 10px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+
+      nav a:hover {
+        color: #fff;
+        background: #2a2a2a;
+      }
+
+      nav a.active {
+        color: #fff;
+        background: #2a2a2a;
+        font-weight: 500;
+      }
+
+      .logout-btn {
+        margin-top: auto;
+        background: transparent;
+        border: 1px solid #333;
+        color: #b0b0b0;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: 0.2s;
+        text-align: center;
+      }
+
+      .logout-btn:hover {
+        background: #2a2a2a;
+        color: #fff;
+        border-color: #555;
+      }
+
+      /* --- MAIN CONTENT --- */
+      .main-content {
+        flex: 1;
+        padding: 32px 40px;
+        min-width: 0;
+      }
+
+      .top-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px 24px;
+        margin-bottom: 32px;
+      }
+
+      .top-bar h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: -0.5px;
+      }
+
+      /* --- BUTTONS --- */
+      .btn-primary {
+        background: #141414;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 6px;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+        transition: 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .btn-primary:hover {
+        background: #2c2c2c;
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .btn-secondary {
+        background: #eaeaea;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .btn-secondary:hover {
+        background: #dcdcdc;
+      }
+
+      /* --- TABLE --- */
+      .table-wrap {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        overflow-x: auto;
+        border: 1px solid #efefef;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        min-width: 600px;
+        table-layout: fixed;
+      }
+
+      th {
+        text-align: left;
+        padding: 16px 18px;
+        background: #fafafa;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #666;
+        border-bottom: 1px solid #eee;
+      }
+
+      td {
+        padding: 12px 18px;
+        border-bottom: 1px solid #f2f2f2;
+        vertical-align: middle;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Fixed column widths */
+      th:nth-child(1), td:nth-child(1) { 
+        width: 70px; 
+        max-width: 70px; 
+        min-width: 70px;
+        padding: 8px 12px;
+      }
+      th:nth-child(2), td:nth-child(2) { width: auto; }
+      th:nth-child(3), td:nth-child(3) { width: 100px; max-width: 100px; }
+      th:nth-child(4), td:nth-child(4) { width: auto; }
+      th:nth-child(5), td:nth-child(5) { width: 90px; max-width: 90px; }
+      th:nth-child(6), td:nth-child(6) { width: 140px; max-width: 140px; }
+
+      /* --- IMAGE CONTAINER --- */
+      .image-cell {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+        overflow: hidden !important;
+        border-radius: 6px !important;
+        background: #f5f5f5;
+        border: 1px solid #eee;
+        flex-shrink: 0 !important;
+      }
+
+      .product-thumb {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+        object-fit: cover !important;
+        display: block !important;
+        flex-shrink: 0 !important;
+      }
+
+      .no-img-placeholder {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+        background: #f5f5f5;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 9px;
+        color: #999;
+        text-align: center;
+        padding: 4px;
+        flex-shrink: 0 !important;
+      }
+
+      /* badges */
+      .badge {
+        display: inline-block;
+        background: #e6ff2b;
+        color: #141414;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-right: 4px;
+        letter-spacing: 0.3px;
+      }
+
+      .badge.best {
+        background: #008ca3;
+        color: #fff;
+      }
+
+      /* action buttons */
+      .edit-btn,
+      .delete-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+        transition: 0.15s;
+        margin-right: 4px;
+        white-space: nowrap;
+      }
+
+      .edit-btn:hover {
+        background: #f5f5f5;
+        border-color: #bbb;
+      }
+
+      .delete-btn {
+        border-color: #e8c8c8;
+        color: #b3415a;
+      }
+
+      .delete-btn:hover {
+        background: #fff3f3;
+        border-color: #dba0a0;
+      }
+
+      .actions-wrapper {
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+      }
+
+      /* --- MODAL --- */
+      .modal {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(2px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .modal-content {
+        background: #fff;
+        padding: 32px;
+        border-radius: 14px;
+        width: 100%;
+        max-width: 520px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        position: relative;
+        animation: fadeIn 0.2s ease;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .modal-header h2 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 26px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+      }
+
+      .close-modal {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: #f1f1f1;
+        border-radius: 50%;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.15s;
+      }
+
+      .close-modal:hover {
+        background: #e3e3e3;
+      }
+
+      /* form */
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 4px;
+        letter-spacing: 0.3px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: 0.15s;
+        font-family: inherit;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #888;
+        box-shadow: 0 0 0 2px rgba(0,0,0,0.04);
+      }
+
+      .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin: 6px 0 16px;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .image-preview {
+        width: 64px;
+        height: 64px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 6px;
+        background: #f7f7f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .error {
+        color: #b3415a;
+        font-size: 13px;
+        margin: 10px 0 0;
+        padding: 8px 12px;
+        background: #fff5f5;
+        border-radius: 4px;
+        display: none;
+      }
+
+      .error.show {
+        display: block;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+
+      /* --- RESPONSIVE --- */
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* TABLET */
+@media (max-width: 820px) {
+
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    position: relative;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 21px;
+    flex-shrink: 0;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 5px;
+  }
+
+  nav a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .logout-btn {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* MAIN */
+  .main-content {
+    width: 100%;
+    padding: 26px 20px 50px;
+  }
+
+  .top-bar {
+    margin-bottom: 24px;
+  }
+
+  .top-bar h1 {
+    font-size: 27px;
+  }
+
+  /* MODAL */
+  .modal {
+    padding: 16px;
+  }
+
+  .modal-content {
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  /* PAGE */
+  .main-content {
+    padding: 20px 12px 40px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    padding: 16px 12px;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 9px 4px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+
+  /* HEADER */
+  .top-bar {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .top-bar h1 {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  /* =====================================================
+     TABLE → MOBILE CARDS
+     ===================================================== */
+
+  .table-wrap {
+    overflow: visible;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  table {
+    width: 100%;
+    min-width: 0;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  table tr {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    padding: 9px 2px;
+    border-bottom: 1px solid #f1f1f1;
+
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+
+    font-size: 13px;
+  }
+
+  table tr td:last-child {
+    border-bottom: none;
+  }
+
+  /* PRODUCT IMAGE */
+  table td:nth-child(1) {
+    justify-content: flex-start;
+    width: 100% !important;
+    padding: 2px 0 12px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .image-cell {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+  }
+
+  .product-thumb {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+  }
+
+  .no-img-placeholder {
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    max-width: 54px !important;
+    min-height: 54px !important;
+    max-height: 54px !important;
+  }
+
+  /* LABELS */
+  table td:not(:nth-child(1))::before {
+    content: attr(data-label);
+
+    display: block;
+    flex: 0 0 auto;
+
+    margin-right: 12px;
+
+    color: #999;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* CONTENT */
+  table td > * {
+    min-width: 0;
+    max-width: 65%;
+  }
+
+  table td strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  /* STATUS SELECT */
+  table td select,
+  .status-select {
+    width: auto;
+    max-width: 60%;
+    min-width: 120px;
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  /* ACTION BUTTONS */
+  .actions-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    margin: 0;
+    padding: 7px 11px;
+    font-size: 11px;
+  }
+
+  /* MODAL */
+  .modal {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - 20px);
+    margin-top: 10px;
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .modal-header h2 {
+    font-size: 22px;
+  }
+
+  .close-modal {
+    width: 34px;
+    height: 34px;
+    font-size: 21px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .main-content {
+    padding: 16px 10px 35px;
+  }
+
+  .sidebar {
+    padding: 14px 10px;
+  }
+
+  nav {
+    gap: 4px;
+  }
+
+  nav a {
+    padding: 8px 3px;
+    font-size: 11px;
+  }
+
+  .top-bar h1 {
+    font-size: 22px;
+  }
+
+  table tr {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  table td {
+    font-size: 12px;
+    padding: 8px 1px;
+  }
+
+  table td:not(:nth-child(1))::before {
+    font-size: 9px;
+    margin-right: 8px;
+  }
+
+  table td > * {
+    max-width: 62%;
+  }
+
+  table td select,
+  .status-select {
+    min-width: 105px;
+    max-width: 58%;
+    font-size: 11px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <div class="logo">ASTA Admin</div>
+        <nav>
+          <a href="/admin">Orders</a>
+          <a href="/admin/products" class="active">Products</a>
+          <a href="/admin/settings">Settings</a>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <h1>Products</h1>
+          <button type="button" id="addProductBtn" class="btn-primary">+ Add Product</button>
+        </header>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Colours</th>
+                <th>Flags</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsBody">
+              <!-- Products will be rendered here -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- MODAL -->
+    <div id="productModal" class="modal" aria-hidden="true">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header">
+          <h2 id="modalTitle">Add Product</h2>
+          <button type="button" id="closeModalBtn" class="close-modal" aria-label="Close">×</button>
+        </div>
+        <form id="productForm">
+          <input type="hidden" id="productId" />
+
+          <div class="form-group">
+            <label for="name">Product Name *</label>
+            <input type="text" id="name" required placeholder="e.g. Sahara Croc Shoulder" />
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price (৳) *</label>
+            <input type="number" id="price" required min="0" step="1" placeholder="2450" />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="3" placeholder="Short description..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="colours">Colours (comma separated)</label>
+            <input type="text" id="colours" placeholder="Tan, Maroon, Sand" />
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" id="isNew" /> New
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="isBestseller" /> Bestseller
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="imageFile">Product Image</label>
+            <input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp,image/gif" />
+            <div id="imagePreview" class="image-preview"></div>
+          </div>
+
+          <div id="formError" class="error"></div>
+
+          <div class="modal-actions">
+            <button type="button" id="cancelBtn" class="btn-secondary">Cancel</button>
+            <button type="submit" id="saveBtn" class="btn-primary">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module">
+      import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabase = createClient(
+  'https://ryfufhtymvjeveppwjoj.supabase.co',
+  'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw',
+  { auth: { storageKey: 'asta-admin-auth' } }
+);
+
+      // --- AUTH CHECK ---
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        window.location.href = '/admin/login';
+        throw new Error('Not authenticated');
+      }
+
+      // --- DOM REFS ---
+      const modal = document.getElementById('productModal');
+      const modalContent = document.getElementById('modalContent');
+      const form = document.getElementById('productForm');
+      const productsBody = document.getElementById('productsBody');
+      const addBtn = document.getElementById('addProductBtn');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const imageFile = document.getElementById('imageFile');
+      const imagePreview = document.getElementById('imagePreview');
+      const saveBtn = document.getElementById('saveBtn');
+      const errorEl = document.getElementById('formError');
+
+      let currentImageUrl = null;
+      let isSaving = false;
+      let cachedProducts = [];
+
+      // --- HELPERS ---
+      function cleanUrl(url) {
+        if (!url) return null;
+        if (typeof url === 'string' && url.includes('<img')) {
+          const match = url.match(/src=["']([^"']+)["']/);
+          return match ? match[1] : null;
+        }
+        return url;
+      }
+
+      function escapeHtml(value) {
+        if (value === null || value === undefined) return '';
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function showError(msg) {
+        errorEl.textContent = msg;
+        errorEl.classList.add('show');
+      }
+
+      function hideError() {
+        errorEl.textContent = '';
+        errorEl.classList.remove('show');
+      }
+
+      function openModal() {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        resetForm();
+      }
+
+      function resetForm() {
+        form.reset();
+        document.getElementById('productId').value = '';
+        currentImageUrl = null;
+        imagePreview.innerHTML = '';
+        imageFile.value = '';
+        hideError();
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save Product';
+        isSaving = false;
+      }
+
+      // --- MODAL EVENTS ---
+      addBtn.addEventListener('click', () => {
+        resetForm();
+        document.getElementById('modalTitle').textContent = 'Add Product';
+        openModal();
+      });
+
+      cancelBtn.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+      });
+
+      modalContent.addEventListener('click', (e) => e.stopPropagation());
+
+      // --- IMAGE PREVIEW ---
+      imageFile.addEventListener('change', () => {
+        const file = imageFile.files?.[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+          };
+          reader.readAsDataURL(file);
+        } else if (currentImageUrl) {
+          const valid = cleanUrl(currentImageUrl);
+          imagePreview.innerHTML = valid ? `<img src="${escapeHtml(valid)}" alt="Current" />` : '';
+        } else {
+          imagePreview.innerHTML = '';
+        }
+      });
+
+      // --- FETCH & RENDER ---
+      async function loadProducts() {
+        // Clear the table body
+        productsBody.innerHTML = '';
+
+        try {
+          const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .order('sort_order', { ascending: true, nullsFirst: false });
+
+          if (error) {
+            console.error('Load error:', error);
+            productsBody.innerHTML = `
+              <tr>
+                <td colspan="6" style="text-align:center;padding:48px 20px;color:#b3415a;">
+                  Failed to load products.<br><small>${escapeHtml(error.message)}</small>
+                </td>
+              </tr>
+            `;
+            return;
+          }
+
+          cachedProducts = data || [];
+
+          if (!cachedProducts.length) {
+            productsBody.innerHTML = `
+              <tr>
+                <td colspan="6" style="text-align:center;padding:48px 20px;color:#888;">
+                  No products yet
+                </td>
+              </tr>
+            `;
+            return;
+          }
+
+          // Build table rows
+          let rows = '';
+          
+          cachedProducts.forEach((p) => {
+            const colours = Array.isArray(p.colours) ? p.colours.join(', ') : '';
+            const raw = cleanUrl(p.image_url);
+            
+            // Image HTML - wrapped in a div container to control size
+            let imageHtml = '';
+            if (raw) {
+              imageHtml = `
+                <div class="image-cell">
+                  <img src="${escapeHtml(raw)}" class="product-thumb" alt="${escapeHtml(p.name)}" loading="lazy" width="50" height="50" />
+                </div>
+              `;
+            } else {
+              imageHtml = `
+                <div class="no-img-placeholder">No image</div>
+              `;
+            }
+
+            // Flags HTML
+            let flagsHtml = '';
+            if (p.is_new) flagsHtml += '<span class="badge">NEW</span>';
+            if (p.is_bestseller) flagsHtml += '<span class="badge best">BEST</span>';
+            if (!flagsHtml) flagsHtml = '<span style="color:#bbb;">—</span>';
+
+            rows += `
+              <tr>
+                <td data-label="Image">${imageHtml}</td>
+                <td data-label="Name"><strong>${escapeHtml(p.name)}</strong></td>
+                <td data-label="Price">৳${Number(p.price || 0).toLocaleString()}</td>
+                <td data-label="Colours">${escapeHtml(colours)}</td>
+                <td data-label="Flags">${flagsHtml}</td>
+                <td data-label="Actions">
+                  <div class="actions-wrapper">
+                    <button type="button" class="edit-btn" data-id="${escapeHtml(p.id)}">Edit</button>
+                    <button type="button" class="delete-btn" data-id="${escapeHtml(p.id)}">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          });
+
+          productsBody.innerHTML = rows;
+
+        } catch (err) {
+          console.error('Unexpected error:', err);
+          productsBody.innerHTML = `
+            <tr>
+              <td colspan="6" style="text-align:center;padding:48px 20px;color:#b3415a;">
+                An unexpected error occurred while loading products.
+              </td>
+            </tr>
+          `;
+        }
+      }
+
+      // --- EDIT / DELETE (delegation) ---
+      productsBody.addEventListener('click', async (e) => {
+        const target = e.target;
+        if (target.tagName !== 'BUTTON') return;
+        const id = target.dataset.id;
+        if (!id) return;
+
+        if (target.classList.contains('edit-btn')) {
+          const product = cachedProducts.find(p => String(p.id) === String(id));
+          if (!product) return;
+
+          resetForm();
+          document.getElementById('modalTitle').textContent = 'Edit Product';
+          document.getElementById('productId').value = product.id;
+          document.getElementById('name').value = product.name || '';
+          document.getElementById('price').value = product.price ?? '';
+          document.getElementById('description').value = product.description || '';
+          document.getElementById('colours').value = Array.isArray(product.colours) ? product.colours.join(', ') : '';
+          document.getElementById('isNew').checked = Boolean(product.is_new);
+          document.getElementById('isBestseller').checked = Boolean(product.is_bestseller);
+
+          currentImageUrl = cleanUrl(product.image_url);
+          if (currentImageUrl) {
+            imagePreview.innerHTML = `<img src="${escapeHtml(currentImageUrl)}" alt="Current" />`;
+          } else {
+            imagePreview.innerHTML = '';
+          }
+
+          openModal();
+        }
+
+        if (target.classList.contains('delete-btn')) {
+          if (!confirm('Delete this product?')) return;
+          target.disabled = true;
+          target.textContent = 'Deleting...';
+
+          const { error } = await supabase.from('products').delete().eq('id', id);
+          if (error) {
+            alert('Delete failed: ' + error.message);
+            target.disabled = false;
+            target.textContent = 'Delete';
+            return;
+          }
+          await loadProducts();
+        }
+      });
+
+      // --- SAVE PRODUCT ---
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (isSaving) return;
+        isSaving = true;
+
+        const id = document.getElementById('productId').value;
+        const name = document.getElementById('name').value.trim();
+        const price = parseInt(document.getElementById('price').value, 10);
+        const description = document.getElementById('description').value.trim();
+        const colours = document.getElementById('colours').value.split(',').map(s => s.trim()).filter(Boolean);
+        const isNew = document.getElementById('isNew').checked;
+        const isBestseller = document.getElementById('isBestseller').checked;
+        const file = imageFile.files?.[0] || null;
+
+        if (!name) { showError('Product name is required.'); isSaving = false; return; }
+        if (!Number.isFinite(price) || price < 0) { showError('Please enter a valid price.'); isSaving = false; return; }
+
+        hideError();
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+
+        try {
+          let imageUrl = cleanUrl(currentImageUrl);
+
+          if (file) {
+            const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-');
+            const fileName = `${Date.now()}-${safeName}`;
+
+            const { error: uploadErr } = await supabase.storage
+              .from('products')
+              .upload(fileName, file, { cacheControl: '3600', upsert: false });
+
+            if (uploadErr) throw new Error('Image upload failed: ' + uploadErr.message);
+
+            const { data: pubData } = supabase.storage.from('products').getPublicUrl(fileName);
+            imageUrl = pubData.publicUrl;
+          }
+
+          const payload = {
+            name,
+            price,
+            description,
+            colours,
+            is_new: isNew,
+            is_bestseller: isBestseller,
+            image_url: imageUrl
+          };
+
+          let result;
+          if (id) {
+            result = await supabase.from('products').update(payload).eq('id', id);
+          } else {
+            result = await supabase.from('products').insert([payload]);
+          }
+
+          if (result.error) throw new Error(result.error.message);
+
+          closeModal();
+          await loadProducts();
+        } catch (err) {
+          console.error('Save error:', err);
+          showError(err?.message || 'Something went wrong.');
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Save Product';
+          isSaving = false;
+        }
+      });
+
+      // --- LOGOUT ---
+      document.getElementById('logoutBtn').addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/admin/login';
+      });
+
+      // --- INIT ---
+      loadProducts();
+    </script>
+  </body>
+</html>
