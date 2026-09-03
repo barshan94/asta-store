@@ -64,10 +64,11 @@ const title = "Orders — ASTA Admin";
     <script type="module">
       import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-      const supabase = createClient(
-        'https://ryfufhtymvjeveppwjoj.supabase.co',   // ← your URL
-        'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw'                         // ← your anon key
-      );
+   const supabase = createClient(
+  'https://ryfufhtymvjeveppwjoj.supabase.co',
+  'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw',
+  { auth: { storageKey: 'asta-admin-auth' } }
+);
 
       // Check login
       const { data: { session } } = await supabase.auth.getSession();

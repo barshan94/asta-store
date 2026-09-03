@@ -891,10 +891,11 @@ of time</h1>
     <script type="module">
       import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-      const supabase = createClient(
-        'https://ryfufhtymvjeveppwjoj.supabase.co',
-        'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw'
-      );
+    const supabase = createClient(
+  'https://ryfufhtymvjeveppwjoj.supabase.co',
+  'sb_publishable_nzsU-ZYMEiOz1hxfsC6Spw_GXfaaVfw',
+  { auth: { storageKey: 'asta-admin-auth' } }
+);
 
       async function loadProducts() {
         const grid = document.getElementById('productsGrid');
