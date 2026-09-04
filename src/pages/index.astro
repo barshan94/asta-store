@@ -87,7 +87,6 @@ const title = "ASTA — Handmade Leather";
       <span id="infoBar1">EDITION NO. 04</span>
       <span id="infoBar2">HANDMADE LEATHER · DHAKA</span>
       <span id="infoBar3">CASH ON DELIVERY</span>
-      <span id="infoBar4">EXCHANGE WITHIN THREE DAYS</span>
     </div>
 
 
@@ -140,11 +139,7 @@ of time</h1>
         <span class="dots"></span>
         <strong id="stat2Value">৳80</strong>
       </div>
-      <div class="stat">
-        <span class="stat-label" id="stat3Label">Exchange window, days</span>
-        <span class="dots"></span>
-        <strong id="stat3Value">3</strong>
-      </div>
+
       <div class="stat">
         <span class="stat-label" id="stat4Label">Card gateways used</span>
         <span class="dots"></span>
@@ -1051,7 +1046,6 @@ async function loadSiteSettings() {
   setText('infoBar1', getSetting('editionLabel'));
   setText('infoBar2', getSetting('infoBar2'));
   setText('infoBar3', getSetting('infoBar3'));
-  setText('infoBar4', getSetting('infoBar4'));
 
   // Hero
   setText('heroTitle', getSetting('heroTitle'));
@@ -1409,21 +1403,35 @@ loadSiteSettings();
      INFO BAR
      ===================================================== */
 
-  .info-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 12px 40px;
-    border-bottom: 1px solid #bdbbb5;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: #666;
-  }
+.info-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  width: 100%;
+  gap: 0;
+  padding: 12px 40px;
+  border-bottom: 1px solid #bdbbb5;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #666;
+}
 
-  .info-bar span {
-    white-space: nowrap;
-  }
+.info-bar span {
+  white-space: nowrap;
+}
+
+.info-bar span:nth-child(1) {
+  text-align: left;
+}
+
+.info-bar span:nth-child(2) {
+  text-align: center;
+}
+
+.info-bar span:nth-child(3) {
+  text-align: right;
+}
 
 
   /* =====================================================
@@ -1518,7 +1526,7 @@ loadSiteSettings();
 
   .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 40px;
     border-top: 1px solid #bdbbb5;
     border-bottom: 1px solid #bdbbb5;
@@ -2362,11 +2370,25 @@ loadSiteSettings();
 
     /* INFO BAR */
 
-    .info-bar {
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      padding: 9px 14px;
-    }
+.info-bar {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 9px 14px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.info-bar span:nth-child(1) {
+  text-align: left;
+}
+
+.info-bar span:nth-child(2) {
+  text-align: center;
+}
+
+.info-bar span:nth-child(3) {
+  text-align: right;
+}
 
     .info-bar span {
       white-space: normal;

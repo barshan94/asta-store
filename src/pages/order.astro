@@ -103,7 +103,6 @@ const title = "ASTA — Mail order coupon";
 
       <span>CASH ON DELIVERY</span>
 
-      <span>EXCHANGE WITHIN THREE DAYS</span>
 
     </div>
 
@@ -2566,13 +2565,12 @@ if (paymentOptions[3]) {
    
 
     // ===== INFO BAR (shared with homepage) =====
-    const infoBarSpans = document.querySelectorAll('.info-bar span');
-    if (infoBarSpans.length >= 4) {
-      if (getSetting('editionLabel')) infoBarSpans[0].textContent = getSetting('editionLabel');
-      if (getSetting('infoBar2'))    infoBarSpans[1].textContent = getSetting('infoBar2');
-      if (getSetting('infoBar3'))    infoBarSpans[2].textContent = getSetting('infoBar3');
-      if (getSetting('infoBar4'))    infoBarSpans[3].textContent = getSetting('infoBar4');
-    }
+const infoBarSpans = document.querySelectorAll('.info-bar span');
+if (infoBarSpans.length >= 3) {
+  if (getSetting('editionLabel')) infoBarSpans[0].textContent = getSetting('editionLabel');
+  if (getSetting('infoBar2'))    infoBarSpans[1].textContent = getSetting('infoBar2');
+  if (getSetting('infoBar3'))    infoBarSpans[2].textContent = getSetting('infoBar3');
+}
 
     // ===== LOGO =====
     if (getSetting('logoUrl')) {
